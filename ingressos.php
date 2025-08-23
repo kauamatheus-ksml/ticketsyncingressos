@@ -539,6 +539,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
         
+        <!-- Sistema de Cupons -->
+        <div class="content-section" style="margin-bottom: 2rem;">
+            <div style="padding: 1.5rem; border-bottom: 1px solid var(--gray-200);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h3 style="margin: 0; color: var(--gray-800); font-size: 1.25rem; font-weight: 700;">
+                            <i class="fas fa-ticket-alt"></i>
+                            Sistema de Cupons de Desconto
+                        </h3>
+                        <p style="margin: 0.5rem 0 0 0; color: var(--gray-600);">
+                            Gerencie cupons de desconto para seus ingressos
+                        </p>
+                    </div>
+                    <button id="btnNovoCupom" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Novo Cupom
+                    </button>
+                </div>
+            </div>
+            
+            <div id="cuponsGrid" class="cupons-grid" style="padding: 1.5rem;">
+                <!-- Cupons serão carregados aqui -->
+            </div>
+        </div>
+
         <!-- Conteúdo Principal -->
         <div class="content-section">
             <div id="ingressosGrid" class="ingressos-grid">
@@ -607,6 +632,103 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <button type="submit" id="btnSalvar" form="ingressoForm" class="btn btn-primary">
                     <i class="fas fa-save"></i>
                     Salvar Ingresso
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Cupom -->
+    <div id="cupomModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="cupomModalTitle" class="modal-title">
+                    <i class="fas fa-ticket-alt"></i>
+                    Novo Cupom de Desconto
+                </h2>
+                <button class="modal-close" onclick="ingressosSystem.closeCupomModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="cupomForm" class="form-grid">
+                    <input type="hidden" id="cupomId" name="cupom_id">
+                    <input type="hidden" name="acao" value="salvar_cupom">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Código do Cupom *</label>
+                            <input type="text" id="codigoCupom" name="codigo" class="form-control" 
+                                   placeholder="Ex: DESC10, PROMO20..." style="text-transform: uppercase;" required>
+                            <small style="color: var(--gray-600); font-size: 0.8rem;">Será convertido para maiúsculas</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Desconto *</label>
+                            <select id="tipoDesconto" name="tipo_desconto" class="form-select" required>
+                                <option value="">Selecione...</option>
+                                <option value="percentual">Percentual (%)</option>
+                                <option value="valor_fixo">Valor Fixo (R$)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" id="labelValorDesconto">Valor do Desconto *</label>
+                            <input type="number" id="valorDesconto" name="valor_desconto" class="form-control" 
+                                   step="0.01" min="0" placeholder="0" required>
+                            <small id="descontoHelper" style="color: var(--gray-600); font-size: 0.8rem;">
+                                Informe o valor do desconto
+                            </small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Limite de Uso</label>
+                            <input type="number" id="limiteUso" name="limite_uso" class="form-control" 
+                                   min="0" placeholder="0 = Ilimitado">
+                            <small style="color: var(--gray-600); font-size: 0.8rem;">0 = sem limite</small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Data de Início</label>
+                            <input type="datetime-local" id="dataInicio" name="data_inicio" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Data de Fim</label>
+                            <input type="datetime-local" id="dataFim" name="data_fim" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Eventos (Opcional)</label>
+                        <select id="eventosSelect" name="eventos[]" class="form-select" multiple>
+                            <!-- Eventos serão carregados aqui -->
+                        </select>
+                        <small style="color: var(--gray-600); font-size: 0.8rem;">
+                            Deixe vazio para aplicar a todos os eventos
+                        </small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Descrição</label>
+                        <textarea id="descricaoCupom" name="descricao" class="form-control" rows="3" 
+                                  placeholder="Descrição opcional do cupom..."></textarea>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="ingressosSystem.closeCupomModal()">
+                    <i class="fas fa-times"></i>
+                    Cancelar
+                </button>
+                <button type="submit" id="btnSalvarCupom" form="cupomForm" class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Salvar Cupom
                 </button>
             </div>
         </div>
