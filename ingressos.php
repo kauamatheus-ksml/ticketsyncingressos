@@ -898,6 +898,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </select>
                     </div>
                     
+                    <div class="form-group">
+                        <label class="form-label">Categoria</label>
+                        <select id="categoriaSelect" name="categoria_id" class="form-select">
+                            <option value="">Categoria Padrão</option>
+                        </select>
+                        <button type="button" id="btnGerenciarCategorias" class="btn btn-secondary btn-sm" style="margin-top: 0.5rem;">
+                            <i class="fas fa-cog"></i>
+                            Gerenciar Categorias
+                        </button>
+                    </div>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Tipo de Ingresso *</label>
@@ -1053,6 +1064,99 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <i class="fas fa-save"></i>
                     Salvar Cupom
                 </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Categorias -->
+    <div id="categoriasModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">
+                    <i class="fas fa-tags"></i>
+                    Gerenciar Categorias
+                </h2>
+                <button class="modal-close" onclick="ingressosSystem.closeCategoriasModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Lista de Categorias -->
+                <div style="margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="margin: 0;">Categorias Existentes</h4>
+                        <button type="button" id="btnNovaCategoria" class="btn btn-primary btn-sm">
+                            <i class="fas fa-plus"></i>
+                            Nova Categoria
+                        </button>
+                    </div>
+                    
+                    <div id="categoriasList" style="max-height: 300px; overflow-y: auto;">
+                        <!-- Categorias serão listadas aqui -->
+                    </div>
+                </div>
+                
+                <!-- Formulário de Categoria -->
+                <div id="categoriaFormSection" class="hidden" style="border-top: 1px solid var(--gray-200); padding-top: 1.5rem;">
+                    <form id="categoriaForm" class="form-grid">
+                        <input type="hidden" id="categoriaId" name="categoria_id">
+                        <input type="hidden" name="acao" value="salvar_categoria">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Nome da Categoria *</label>
+                                <input type="text" id="nomeCategoria" name="nome" class="form-control" 
+                                       placeholder="Ex: VIP, Pista, Camarote..." required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Cor da Categoria *</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="color" id="corCategoria" name="cor" class="form-control" 
+                                           value="#3b82f6" style="width: 60px; padding: 0.25rem;" required>
+                                    <input type="text" id="corHex" class="form-control" placeholder="#3b82f6" 
+                                           style="flex: 1;" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Ícone FontAwesome</label>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <input type="text" id="iconeCategoria" name="icone" class="form-control" 
+                                           placeholder="Ex: ticket-alt, star, crown...">
+                                    <div id="iconePreview" style="width: 40px; height: 40px; border: 1px solid var(--gray-300); 
+                                         border-radius: 6px; display: flex; align-items: center; justify-content: center; 
+                                         background: var(--gray-50); font-size: 1.2rem;">
+                                        <i class="fas fa-ticket-alt"></i>
+                                    </div>
+                                </div>
+                                <small style="color: var(--gray-600); font-size: 0.8rem;">
+                                    Deixe vazio para usar ícone padrão. <a href="https://fontawesome.com/icons" target="_blank">Ver ícones</a>
+                                </small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Descrição</label>
+                                <input type="text" id="descricaoCategoria" name="descricao" class="form-control" 
+                                       placeholder="Descrição opcional...">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" style="display: flex; gap: 1rem; justify-content: flex-end;">
+                            <button type="button" class="btn btn-secondary" onclick="ingressosSystem.cancelarCategoriaForm()">
+                                <i class="fas fa-times"></i>
+                                Cancelar
+                            </button>
+                            <button type="submit" id="btnSalvarCategoria" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Salvar Categoria
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
