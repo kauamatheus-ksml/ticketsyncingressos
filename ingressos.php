@@ -495,6 +495,88 @@ if (isset($_GET['action'])) {
             exit();
         }
     }
+    
+    // ===== ENDPOINTS PARA CATEGORIAS =====
+    
+    // Listar categorias
+    if ($action === 'load_categorias') {
+        $stmt = $conn->prepare("
+            SELECT * FROM categorias_ingressos 
+            WHERE promotor_id = ? 
+            ORDER BY nome ASC
+        ");
+        $stmt->bind_param("i", $usuarioId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $categorias = [];
+        while ($row = $result->fetch_assoc()) {
+            $categorias[] = $row;
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode($categorias);
+        exit();
+    }
+    
+    // Buscar categoria específica
+    if ($action === 'get_categoria') {
+        $id = intval($_GET['id'] ?? 0);
+        if ($id > 0) {
+            $stmt = $conn->prepare("
+                SELECT * FROM categorias_ingressos 
+                WHERE id = ? AND promotor_id = ?
+            ");
+            $stmt->bind_param("ii", $id, $usuarioId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($result->num_rows > 0) {
+                $categoria = $result->fetch_assoc();
+                header('Content-Type: application/json');
+                echo json_encode($categoria);
+            } else {
+                header('Content-Type: application/json');
+                echo json_encode(['error' => 'Categoria não encontrada']);
+            }
+            exit();
+        }
+    }
+    
+    // Excluir categoria
+    if ($action === 'delete_categoria') {
+        $id = intval($_GET['id'] ?? 0);
+        if ($id > 0 && $_SERVER['REQUEST_METHOD'] === 'DELETE') {
+            // Verificar se tem ingressos usando esta categoria
+            $stmt = $conn->prepare("
+                SELECT COUNT(*) as count
+                FROM ingressos 
+                WHERE categoria_id = ? AND promotor_id = ?
+            ");
+            $stmt->bind_param("ii", $id, $usuarioId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            
+            if ($row['count'] > 0) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Não é possível excluir categoria que possui ingressos vinculados']);
+                exit();
+            }
+            
+            $stmt = $conn->prepare("DELETE FROM categorias_ingressos WHERE id = ? AND promotor_id = ?");
+            $stmt->bind_param("ii", $id, $usuarioId);
+            
+            if ($stmt->execute()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true, 'message' => 'Categoria excluída com sucesso!']);
+            } else {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Erro ao excluir categoria']);
+            }
+            exit();
+        }
+    }
 }
 
 // ===== PROCESSAMENTO DE FORMULÁRIOS =====
@@ -688,6 +770,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $response['message'] = $id > 0 ? 'Cupom atualizado com sucesso!' : 'Cupom criado com sucesso!';
                 } else {
                     $response['message'] = 'Erro ao salvar cupom: ' . $conn->error;
+                }
+            }
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
+    
+    // Salvar categoria
+    if (isset($_POST['acao']) && $_POST['acao'] === 'salvar_categoria') {
+        $id = intval($_POST['categoria_id'] ?? 0);
+        $nome = sanitize($_POST['nome'] ?? '');
+        $cor = sanitize($_POST['cor'] ?? '#3b82f6');
+        $icone = sanitize($_POST['icone'] ?? '');
+        $descricao = sanitize($_POST['descricao'] ?? '');
+        
+        // Validações
+        if (!$nome || !$cor) {
+            $response['message'] = 'Preencha todos os campos obrigatórios!';
+        } else {
+            // Verificar se nome já existe (exceto se for edição)
+            $sql = "SELECT id FROM categorias_ingressos WHERE nome = ? AND promotor_id = ?";
+            if ($id > 0) {
+                $sql .= " AND id != ?";
+            }
+            
+            $stmt = $conn->prepare($sql);
+            if ($id > 0) {
+                $stmt->bind_param("sii", $nome, $usuarioId, $id);
+            } else {
+                $stmt->bind_param("si", $nome, $usuarioId);
+            }
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($result->num_rows > 0) {
+                $response['message'] = 'Já existe uma categoria com este nome!';
+            } else {
+                // Validar formato da cor
+                if (!preg_match('/^#[a-f0-9]{6}$/i', $cor)) {
+                    $response['message'] = 'Formato de cor inválido!';
+                } else {
+                    if ($id > 0) {
+                        // Edição
+                        $sql = "
+                            UPDATE categorias_ingressos SET
+                                nome = ?, cor = ?, icone = ?, descricao = ?
+                            WHERE id = ? AND promotor_id = ?
+                        ";
+                        
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("ssssii", $nome, $cor, $icone, $descricao, $id, $usuarioId);
+                    } else {
+                        // Nova categoria
+                        $sql = "
+                            INSERT INTO categorias_ingressos (
+                                nome, cor, icone, descricao, promotor_id, ativo
+                            ) VALUES (?, ?, ?, ?, ?, 1)
+                        ";
+                        
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("ssssi", $nome, $cor, $icone, $descricao, $usuarioId);
+                    }
+                    
+                    if ($stmt->execute()) {
+                        $response['success'] = true;
+                        $response['message'] = $id > 0 ? 'Categoria atualizada com sucesso!' : 'Categoria criada com sucesso!';
+                    } else {
+                        $response['message'] = 'Erro ao salvar categoria: ' . $conn->error;
+                    }
                 }
             }
         }
