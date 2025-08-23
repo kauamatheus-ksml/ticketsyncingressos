@@ -338,6 +338,163 @@ if (isset($_GET['action'])) {
             exit();
         }
     }
+    
+    // ===== ENDPOINTS PARA CUPONS =====
+    
+    // Listar cupons
+    if ($action === 'load_cupons') {
+        $stmt = $conn->prepare("
+            SELECT c.*, 
+                   COALESCE(COUNT(pc.cupom_id), 0) as usos_count,
+                   CASE 
+                       WHEN c.data_inicio > NOW() THEN 'agendado'
+                       WHEN c.data_fim < NOW() THEN 'expirado'
+                       WHEN c.limite_uso > 0 AND COALESCE(COUNT(pc.cupom_id), 0) >= c.limite_uso THEN 'esgotado'
+                       WHEN c.ativo = 1 THEN 'ativo'
+                       ELSE 'inativo'
+                   END as status_cupom
+            FROM cupons_desconto c
+            LEFT JOIN pedidos_cupons pc ON c.id = pc.cupom_id
+            WHERE c.promotor_id = ?
+            GROUP BY c.id
+            ORDER BY c.created_at DESC
+        ");
+        $stmt->bind_param("i", $usuarioId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $cupons = [];
+        while ($row = $result->fetch_assoc()) {
+            $cupons[] = $row;
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode($cupons);
+        exit();
+    }
+    
+    // Buscar cupom específico
+    if ($action === 'get_cupom') {
+        $id = intval($_GET['id'] ?? 0);
+        if ($id > 0) {
+            $stmt = $conn->prepare("
+                SELECT c.*,
+                       GROUP_CONCAT(ce.evento_id) as eventos_ids
+                FROM cupons_desconto c
+                LEFT JOIN cupons_eventos ce ON c.id = ce.cupom_id
+                WHERE c.id = ? AND c.promotor_id = ?
+                GROUP BY c.id
+            ");
+            $stmt->bind_param("ii", $id, $usuarioId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($result->num_rows > 0) {
+                $cupom = $result->fetch_assoc();
+                header('Content-Type: application/json');
+                echo json_encode($cupom);
+            } else {
+                header('Content-Type: application/json');
+                echo json_encode(['error' => 'Cupom não encontrado']);
+            }
+            exit();
+        }
+    }
+    
+    // Alternar status do cupom
+    if ($action === 'toggle_cupom_status') {
+        $id = intval($_GET['id'] ?? 0);
+        if ($id > 0) {
+            $stmt = $conn->prepare("SELECT ativo FROM cupons_desconto WHERE id = ? AND promotor_id = ?");
+            $stmt->bind_param("ii", $id, $usuarioId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $newStatus = $row['ativo'] == 1 ? 0 : 1;
+                
+                $stmt = $conn->prepare("UPDATE cupons_desconto SET ativo = ? WHERE id = ? AND promotor_id = ?");
+                $stmt->bind_param("iii", $newStatus, $id, $usuarioId);
+                
+                if ($stmt->execute()) {
+                    header('Content-Type: application/json');
+                    echo json_encode([
+                        'success' => true, 
+                        'status' => $newStatus,
+                        'message' => $newStatus ? 'Cupom ativado com sucesso!' : 'Cupom desativado com sucesso!'
+                    ]);
+                }
+            }
+            exit();
+        }
+    }
+    
+    // Excluir cupom
+    if ($action === 'delete_cupom') {
+        $id = intval($_GET['id'] ?? 0);
+        if ($id > 0 && $_SERVER['REQUEST_METHOD'] === 'DELETE') {
+            // Verificar se tem usos
+            $stmt = $conn->prepare("
+                SELECT COUNT(*) as usos
+                FROM pedidos_cupons pc
+                WHERE pc.cupom_id = ?
+            ");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            
+            if ($row['usos'] > 0) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Não é possível excluir cupom que já foi usado']);
+                exit();
+            }
+            
+            // Excluir relacionamentos primeiro
+            $conn->prepare("DELETE FROM cupons_eventos WHERE cupom_id = ?")->execute([$id]);
+            
+            $stmt = $conn->prepare("DELETE FROM cupons_desconto WHERE id = ? AND promotor_id = ?");
+            $stmt->bind_param("ii", $id, $usuarioId);
+            
+            if ($stmt->execute()) {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true, 'message' => 'Cupom excluído com sucesso!']);
+            } else {
+                header('Content-Type: application/json');
+                echo json_encode(['success' => false, 'message' => 'Erro ao excluir cupom']);
+            }
+            exit();
+        }
+    }
+    
+    // ===== ENDPOINTS PARA LOTES =====
+    
+    // Buscar lotes do ingresso
+    if ($action === 'get_lotes') {
+        $ingressoId = intval($_GET['ingresso_id'] ?? 0);
+        if ($ingressoId > 0) {
+            $stmt = $conn->prepare("
+                SELECT l.* 
+                FROM lotes_ingressos l
+                INNER JOIN ingressos i ON l.ingresso_id = i.id
+                WHERE l.ingresso_id = ? AND i.promotor_id = ?
+                ORDER BY l.ordem ASC
+            ");
+            $stmt->bind_param("ii", $ingressoId, $usuarioId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            $lotes = [];
+            while ($row = $result->fetch_assoc()) {
+                $lotes[] = $row;
+            }
+            
+            header('Content-Type: application/json');
+            echo json_encode($lotes);
+            exit();
+        }
+    }
 }
 
 // ===== PROCESSAMENTO DE FORMULÁRIOS =====
@@ -351,10 +508,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tipo_ingresso = sanitize($_POST['tipo_ingresso'] ?? '');
         $preco = floatval($_POST['preco'] ?? 0);
         $quantidade = intval($_POST['quantidade'] ?? 0);
+        $usarLotes = isset($_POST['usar_lotes']) && $_POST['usar_lotes'] == '1';
+        $lotes = $_POST['lotes'] ?? [];
         
         // Validações
         if (!$evento_id || !$tipo_ingresso || $preco <= 0 || $quantidade < 0) {
             $response['message'] = 'Preencha todos os campos obrigatórios!';
+        } elseif ($usarLotes && empty($lotes)) {
+            $response['message'] = 'Para usar lotes, adicione pelo menos um lote!';
         } else {
             // Verificar se evento pertence ao usuário
             $stmt = $conn->prepare("SELECT id FROM eventos WHERE id = ? AND promotor_id = ?");
@@ -388,10 +549,145 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 
                 if ($stmt->execute()) {
+                    $ingressoId = $id > 0 ? $id : $conn->insert_id;
+                    
+                    // Processar lotes se habilitado
+                    if ($usarLotes && !empty($lotes)) {
+                        // Remover lotes antigos se for edição
+                        $conn->prepare("DELETE FROM lotes_ingressos WHERE ingresso_id = ?")->execute([$ingressoId]);
+                        
+                        // Adicionar novos lotes
+                        $stmtLote = $conn->prepare("
+                            INSERT INTO lotes_ingressos 
+                            (ingresso_id, nome, descricao, preco, quantidade, data_inicio, data_fim, ordem, ativo) 
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)
+                        ");
+                        
+                        foreach ($lotes as $index => $lote) {
+                            $nomeLote = sanitize($lote['nome'] ?? '');
+                            $descricaoLote = sanitize($lote['descricao'] ?? '');
+                            $precoLote = floatval($lote['preco'] ?? 0);
+                            $quantidadeLote = intval($lote['quantidade'] ?? 0);
+                            $dataInicioLote = $lote['data_inicio'] ?? null;
+                            $dataFimLote = $lote['data_fim'] ?? null;
+                            
+                            if ($nomeLote && $precoLote > 0 && $quantidadeLote > 0) {
+                                if (empty($dataInicioLote)) $dataInicioLote = null;
+                                if (empty($dataFimLote)) $dataFimLote = null;
+                                
+                                $stmtLote->bind_param("issdissi", 
+                                    $ingressoId, $nomeLote, $descricaoLote, $precoLote, 
+                                    $quantidadeLote, $dataInicioLote, $dataFimLote, $index + 1
+                                );
+                                $stmtLote->execute();
+                            }
+                        }
+                    }
+                    
                     $response['success'] = true;
                     $response['message'] = $id > 0 ? 'Ingresso atualizado com sucesso!' : 'Ingresso criado com sucesso!';
                 } else {
                     $response['message'] = 'Erro ao salvar ingresso: ' . $conn->error;
+                }
+            }
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode($response);
+        exit();
+    }
+    
+    // Salvar cupom
+    if (isset($_POST['acao']) && $_POST['acao'] === 'salvar_cupom') {
+        $id = intval($_POST['cupom_id'] ?? 0);
+        $codigo = strtoupper(sanitize($_POST['codigo'] ?? ''));
+        $tipo_desconto = sanitize($_POST['tipo_desconto'] ?? '');
+        $valor_desconto = floatval($_POST['valor_desconto'] ?? 0);
+        $limite_uso = intval($_POST['limite_uso'] ?? 0);
+        $data_inicio = $_POST['data_inicio'] ?? null;
+        $data_fim = $_POST['data_fim'] ?? null;
+        $descricao = sanitize($_POST['descricao'] ?? '');
+        $eventos = $_POST['eventos'] ?? [];
+        
+        // Validações
+        if (!$codigo || !$tipo_desconto || $valor_desconto <= 0) {
+            $response['message'] = 'Preencha todos os campos obrigatórios!';
+        } elseif ($tipo_desconto === 'percentual' && $valor_desconto > 100) {
+            $response['message'] = 'Desconto percentual não pode ser maior que 100%!';
+        } else {
+            // Verificar se código já existe (exceto se for edição)
+            $sql = "SELECT id FROM cupons_desconto WHERE codigo = ? AND promotor_id = ?";
+            if ($id > 0) {
+                $sql .= " AND id != ?";
+            }
+            
+            $stmt = $conn->prepare($sql);
+            if ($id > 0) {
+                $stmt->bind_param("sii", $codigo, $usuarioId, $id);
+            } else {
+                $stmt->bind_param("si", $codigo, $usuarioId);
+            }
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            if ($result->num_rows > 0) {
+                $response['message'] = 'Já existe um cupom com este código!';
+            } else {
+                // Ajustar datas
+                if (empty($data_inicio)) $data_inicio = null;
+                if (empty($data_fim)) $data_fim = null;
+                
+                if ($id > 0) {
+                    // Edição
+                    $sql = "
+                        UPDATE cupons_desconto SET
+                            codigo = ?, tipo_desconto = ?, valor_desconto = ?, limite_uso = ?,
+                            data_inicio = ?, data_fim = ?, descricao = ?
+                        WHERE id = ? AND promotor_id = ?
+                    ";
+                    
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("ssdissiii", 
+                        $codigo, $tipo_desconto, $valor_desconto, $limite_uso,
+                        $data_inicio, $data_fim, $descricao, $id, $usuarioId
+                    );
+                } else {
+                    // Novo cupom
+                    $sql = "
+                        INSERT INTO cupons_desconto (
+                            codigo, tipo_desconto, valor_desconto, limite_uso,
+                            data_inicio, data_fim, descricao, promotor_id, ativo
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)
+                    ";
+                    
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("ssdisssi", 
+                        $codigo, $tipo_desconto, $valor_desconto, $limite_uso,
+                        $data_inicio, $data_fim, $descricao, $usuarioId
+                    );
+                }
+                
+                if ($stmt->execute()) {
+                    $cupomId = $id > 0 ? $id : $conn->insert_id;
+                    
+                    // Atualizar relacionamentos com eventos
+                    $conn->prepare("DELETE FROM cupons_eventos WHERE cupom_id = ?")->execute([$cupomId]);
+                    
+                    if (!empty($eventos)) {
+                        $stmtEvento = $conn->prepare("INSERT INTO cupons_eventos (cupom_id, evento_id) VALUES (?, ?)");
+                        foreach ($eventos as $eventoId) {
+                            $eventoId = intval($eventoId);
+                            if ($eventoId > 0) {
+                                $stmtEvento->bind_param("ii", $cupomId, $eventoId);
+                                $stmtEvento->execute();
+                            }
+                        }
+                    }
+                    
+                    $response['success'] = true;
+                    $response['message'] = $id > 0 ? 'Cupom atualizado com sucesso!' : 'Cupom criado com sucesso!';
+                } else {
+                    $response['message'] = 'Erro ao salvar cupom: ' . $conn->error;
                 }
             }
         }
@@ -620,6 +916,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label class="form-label">Quantidade *</label>
                         <input type="number" id="quantidade" name="quantidade" class="form-control" 
                                min="0" placeholder="100" required>
+                    </div>
+                    
+                    <!-- Sistema de Lotes -->
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 0.5rem;">
+                            <input type="checkbox" id="usarLotes" style="margin: 0;">
+                            <span class="form-label" style="margin: 0;">Usar sistema de lotes promocionais</span>
+                        </label>
+                        <small style="color: var(--gray-600); font-size: 0.8rem;">
+                            Ative para criar diferentes períodos de venda com preços especiais
+                        </small>
+                    </div>
+                    
+                    <div id="lotesSection" class="hidden" style="border: 1px solid var(--gray-200); border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                        <h4 style="margin: 0 0 1rem 0; color: var(--gray-800); font-size: 1rem;">
+                            <i class="fas fa-layer-group"></i>
+                            Configuração de Lotes
+                        </h4>
+                        
+                        <div id="lotesContainer">
+                            <!-- Lotes serão adicionados aqui -->
+                        </div>
+                        
+                        <button type="button" id="btnAdicionarLote" class="btn btn-secondary btn-sm" style="margin-top: 1rem;">
+                            <i class="fas fa-plus"></i>
+                            Adicionar Lote
+                        </button>
                     </div>
                 </form>
             </div>

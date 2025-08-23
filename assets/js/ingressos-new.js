@@ -8,6 +8,7 @@ class IngressosSystem {
         this.currentPage = 1;
         this.isLoading = false;
         this.searchTimeout = null;
+        this.loteCount = 0;
         
         this.init();
     }
@@ -17,6 +18,7 @@ class IngressosSystem {
         this.loadStats();
         this.loadEventos();
         this.loadIngressos();
+        this.loadCupons();
     }
     
     bindEvents() {
@@ -77,6 +79,56 @@ class IngressosSystem {
                 this.resetForm();
                 this.openModal();
             });
+        }
+        
+        // ===== EVENTOS DOS CUPONS =====
+        
+        // Botão novo cupom
+        const btnNovoCupom = document.getElementById('btnNovoCupom');
+        if (btnNovoCupom) {
+            btnNovoCupom.addEventListener('click', () => {
+                this.resetCupomForm();
+                this.openCupomModal();
+            });
+        }
+        
+        // Modal de cupom
+        const cupomModal = document.getElementById('cupomModal');
+        if (cupomModal) {
+            cupomModal.addEventListener('click', (e) => {
+                if (e.target === cupomModal) {
+                    this.closeCupomModal();
+                }
+            });
+        }
+        
+        // Form de cupom
+        const cupomForm = document.getElementById('cupomForm');
+        if (cupomForm) {
+            cupomForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.saveCupom();
+            });
+        }
+        
+        // Mudança no tipo de desconto
+        const tipoDesconto = document.getElementById('tipoDesconto');
+        if (tipoDesconto) {
+            tipoDesconto.addEventListener('change', this.updateDescontoHelper.bind(this));
+        }
+        
+        // ===== EVENTOS DOS LOTES =====
+        
+        // Checkbox usar lotes
+        const usarLotes = document.getElementById('usarLotes');
+        if (usarLotes) {
+            usarLotes.addEventListener('change', this.toggleLotesSection.bind(this));
+        }
+        
+        // Botão adicionar lote
+        const btnAdicionarLote = document.getElementById('btnAdicionarLote');
+        if (btnAdicionarLote) {
+            btnAdicionarLote.addEventListener('click', this.adicionarLote.bind(this));
         }
     }
     
@@ -376,6 +428,12 @@ class IngressosSystem {
         
         document.getElementById('modalTitle').textContent = 'Novo Ingresso';
         document.getElementById('ingressoId').value = '';
+        
+        // Resetar lotes
+        document.getElementById('usarLotes').checked = false;
+        this.toggleLotesSection();
+        document.getElementById('lotesContainer').innerHTML = '';
+        this.loteCount = 0;
     }
     
     openModal() {
@@ -388,6 +446,335 @@ class IngressosSystem {
     
     closeModal() {
         const modal = document.getElementById('ingressoModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+    
+    // ===== MÉTODOS DOS CUPONS =====
+    
+    async loadCupons() {
+        try {
+            const response = await fetch('ingressos.php?action=load_cupons');
+            const cupons = await response.json();
+            this.renderCupons(cupons);
+        } catch (error) {
+            console.error('Erro ao carregar cupons:', error);
+        }
+    }
+    
+    renderCupons(cupons) {
+        const container = document.getElementById('cuponsGrid');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        if (cupons.length === 0) {
+            container.innerHTML = `
+                <div class="cupom-empty">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h4>Nenhum cupom criado</h4>
+                    <p>Crie cupons de desconto para aumentar suas vendas!</p>
+                </div>
+            `;
+            return;
+        }
+        
+        cupons.forEach(cupom => {
+            const card = this.createCupomCard(cupom);
+            container.appendChild(card);
+        });
+    }
+    
+    createCupomCard(cupom) {
+        const div = document.createElement('div');
+        div.className = `cupom-card ${cupom.ativo == 0 ? 'inactive' : ''}`;
+        
+        const statusClass = this.getCupomStatusClass(cupom.status_cupom);
+        const statusText = this.getCupomStatusText(cupom.status_cupom);
+        
+        const descontoDisplay = cupom.tipo_desconto === 'percentual' ? 
+            `${cupom.valor_desconto}%` : 
+            this.formatCurrency(cupom.valor_desconto);
+            
+        const limiteTxt = cupom.limite_uso > 0 ? 
+            `${cupom.usos_count}/${cupom.limite_uso}` : 
+            cupom.usos_count;
+            
+        const progressPercent = cupom.limite_uso > 0 ? 
+            (cupom.usos_count / cupom.limite_uso) * 100 : 0;
+        
+        div.innerHTML = `
+            <div class="cupom-status ${statusClass}">${statusText}</div>
+            <div class="cupom-header">
+                <h4 class="cupom-code">${cupom.codigo}</h4>
+                <p class="cupom-type">
+                    ${cupom.tipo_desconto === 'percentual' ? 'Desconto Percentual' : 'Desconto Fixo'}
+                </p>
+            </div>
+            <div class="cupom-body">
+                <div class="cupom-desconto">${descontoDisplay}</div>
+                
+                <div class="cupom-info">
+                    <div class="cupom-info-item">
+                        <div class="cupom-info-label">Usos</div>
+                        <div class="cupom-info-value">${limiteTxt}</div>
+                    </div>
+                    <div class="cupom-info-item">
+                        <div class="cupom-info-label">Status</div>
+                        <div class="cupom-info-value">${cupom.ativo == 1 ? 'Ativo' : 'Inativo'}</div>
+                    </div>
+                </div>
+                
+                ${cupom.limite_uso > 0 ? `
+                    <div class="cupom-progress">
+                        <div class="cupom-progress-label">
+                            <span>Progresso de uso</span>
+                            <span>${progressPercent.toFixed(1)}%</span>
+                        </div>
+                        <div class="cupom-progress-bar">
+                            <div class="cupom-progress-fill" style="width: ${progressPercent}%"></div>
+                        </div>
+                    </div>
+                ` : ''}
+                
+                ${(cupom.data_inicio || cupom.data_fim) ? `
+                    <div class="cupom-dates">
+                        ${cupom.data_inicio ? `<div><strong>Início:</strong> ${this.formatDateTime(cupom.data_inicio)}</div>` : ''}
+                        ${cupom.data_fim ? `<div><strong>Fim:</strong> ${this.formatDateTime(cupom.data_fim)}</div>` : ''}
+                    </div>
+                ` : ''}
+                
+                ${cupom.descricao ? `<p style="font-size: 0.9rem; color: var(--gray-600); margin: 1rem 0;">${cupom.descricao}</p>` : ''}
+                
+                <div class="cupom-actions">
+                    <button class="btn btn-primary btn-sm" onclick="ingressosSystem.editCupom(${cupom.id})">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <button class="btn ${cupom.ativo == 1 ? 'btn-warning' : 'btn-success'} btn-sm" 
+                            onclick="ingressosSystem.toggleCupomStatus(${cupom.id})">
+                        <i class="fas ${cupom.ativo == 1 ? 'fa-ban' : 'fa-check'}"></i>
+                        ${cupom.ativo == 1 ? 'Desativar' : 'Ativar'}
+                    </button>
+                    <button class="btn btn-danger btn-sm" onclick="ingressosSystem.deleteCupom(${cupom.id})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        return div;
+    }
+    
+    getCupomStatusClass(status) {
+        const statusMap = {
+            'ativo': 'ativo',
+            'inativo': 'inativo',
+            'expirado': 'expirado',
+            'esgotado': 'esgotado',
+            'agendado': 'agendado'
+        };
+        return statusMap[status] || 'inativo';
+    }
+    
+    getCupomStatusText(status) {
+        const textMap = {
+            'ativo': 'Ativo',
+            'inativo': 'Inativo',
+            'expirado': 'Expirado',
+            'esgotado': 'Esgotado',
+            'agendado': 'Agendado'
+        };
+        return textMap[status] || 'Inativo';
+    }
+    
+    async editCupom(id) {
+        try {
+            const response = await fetch(`ingressos.php?action=get_cupom&id=${id}`);
+            const cupom = await response.json();
+            
+            if (cupom.error) {
+                this.showError(cupom.error);
+                return;
+            }
+            
+            // Carregar eventos para o select
+            await this.loadEventosForCupom();
+            
+            // Preencher formulário
+            document.getElementById('cupomModalTitle').textContent = 'Editar Cupom';
+            document.getElementById('cupomId').value = cupom.id;
+            document.getElementById('codigoCupom').value = cupom.codigo;
+            document.getElementById('tipoDesconto').value = cupom.tipo_desconto;
+            document.getElementById('valorDesconto').value = cupom.valor_desconto;
+            document.getElementById('limiteUso').value = cupom.limite_uso || '';
+            
+            if (cupom.data_inicio) {
+                document.getElementById('dataInicio').value = this.formatDateTimeLocal(cupom.data_inicio);
+            }
+            if (cupom.data_fim) {
+                document.getElementById('dataFim').value = this.formatDateTimeLocal(cupom.data_fim);
+            }
+            
+            document.getElementById('descricaoCupom').value = cupom.descricao || '';
+            
+            // Selecionar eventos
+            const eventosSelect = document.getElementById('eventosSelect');
+            if (cupom.eventos_ids) {
+                const eventosIds = cupom.eventos_ids.split(',');
+                Array.from(eventosSelect.options).forEach(option => {
+                    option.selected = eventosIds.includes(option.value);
+                });
+            }
+            
+            this.updateDescontoHelper();
+            this.openCupomModal();
+            
+        } catch (error) {
+            console.error('Erro ao carregar cupom:', error);
+            this.showError('Erro ao carregar dados do cupom');
+        }
+    }
+    
+    async toggleCupomStatus(id) {
+        try {
+            const response = await fetch(`ingressos.php?action=toggle_cupom_status&id=${id}`);
+            const data = await response.json();
+            
+            if (data.success) {
+                this.showSuccess(data.message);
+                this.loadCupons();
+            } else {
+                this.showError(data.message || 'Erro ao alterar status');
+            }
+            
+        } catch (error) {
+            console.error('Erro ao alterar status do cupom:', error);
+            this.showError('Erro ao alterar status do cupom');
+        }
+    }
+    
+    async deleteCupom(id) {
+        if (!confirm('Tem certeza que deseja excluir este cupom?')) {
+            return;
+        }
+        
+        try {
+            const response = await fetch(`ingressos.php?action=delete_cupom&id=${id}`, {
+                method: 'DELETE'
+            });
+            const data = await response.json();
+            
+            if (data.success) {
+                this.showSuccess(data.message);
+                this.loadCupons();
+            } else {
+                this.showError(data.message);
+            }
+            
+        } catch (error) {
+            console.error('Erro ao excluir cupom:', error);
+            this.showError('Erro ao excluir cupom');
+        }
+    }
+    
+    async saveCupom() {
+        const form = document.getElementById('cupomForm');
+        const formData = new FormData(form);
+        
+        const btnSalvar = document.getElementById('btnSalvarCupom');
+        const originalText = btnSalvar.innerHTML;
+        btnSalvar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Salvando...';
+        btnSalvar.disabled = true;
+        
+        try {
+            const response = await fetch('ingressos.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                this.showSuccess(data.message);
+                this.closeCupomModal();
+                this.loadCupons();
+            } else {
+                this.showError(data.message);
+            }
+            
+        } catch (error) {
+            console.error('Erro ao salvar cupom:', error);
+            this.showError('Erro ao salvar cupom');
+        } finally {
+            btnSalvar.innerHTML = originalText;
+            btnSalvar.disabled = false;
+        }
+    }
+    
+    async loadEventosForCupom() {
+        try {
+            const response = await fetch('ingressos.php?action=eventos');
+            const eventos = await response.json();
+            
+            const select = document.getElementById('eventosSelect');
+            if (select) {
+                select.innerHTML = '';
+                eventos.forEach(evento => {
+                    const option = document.createElement('option');
+                    option.value = evento.id;
+                    option.textContent = `${evento.nome} - ${this.formatDate(evento.data_inicio)}`;
+                    select.appendChild(option);
+                });
+            }
+        } catch (error) {
+            console.error('Erro ao carregar eventos para cupom:', error);
+        }
+    }
+    
+    updateDescontoHelper() {
+        const tipo = document.getElementById('tipoDesconto').value;
+        const label = document.getElementById('labelValorDesconto');
+        const helper = document.getElementById('descontoHelper');
+        const input = document.getElementById('valorDesconto');
+        
+        if (tipo === 'percentual') {
+            label.textContent = 'Percentual de Desconto (%) *';
+            helper.textContent = 'Valor entre 0 e 100';
+            input.max = '100';
+            input.step = '0.01';
+        } else if (tipo === 'valor_fixo') {
+            label.textContent = 'Valor Fixo (R$) *';
+            helper.textContent = 'Valor em reais';
+            input.max = '';
+            input.step = '0.01';
+        } else {
+            label.textContent = 'Valor do Desconto *';
+            helper.textContent = 'Informe o valor do desconto';
+        }
+    }
+    
+    resetCupomForm() {
+        const form = document.getElementById('cupomForm');
+        if (form) form.reset();
+        
+        document.getElementById('cupomModalTitle').textContent = 'Novo Cupom de Desconto';
+        document.getElementById('cupomId').value = '';
+        this.updateDescontoHelper();
+    }
+    
+    openCupomModal() {
+        const modal = document.getElementById('cupomModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            this.loadEventosForCupom();
+        }
+    }
+    
+    closeCupomModal() {
+        const modal = document.getElementById('cupomModal');
         if (modal) {
             modal.classList.remove('active');
             document.body.style.overflow = '';
@@ -504,6 +891,31 @@ class IngressosSystem {
         }
     }
     
+    formatDateTime(dateString) {
+        if (!dateString) return '';
+        try {
+            const date = new Date(dateString);
+            return date.toLocaleString('pt-BR');
+        } catch {
+            return dateString;
+        }
+    }
+    
+    formatDateTimeLocal(dateString) {
+        if (!dateString) return '';
+        try {
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${year}-${month}-${day}T${hours}:${minutes}`;
+        } catch {
+            return '';
+        }
+    }
+    
     showSuccess(message) {
         this.showToast(message, 'success');
     }
@@ -559,6 +971,7 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         if (window.ingressosSystem) {
             window.ingressosSystem.closeModal();
+            window.ingressosSystem.closeCupomModal();
         }
     }
 });

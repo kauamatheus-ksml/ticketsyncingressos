@@ -662,6 +662,283 @@ body {
     animation: fadeInUp 0.3s ease forwards;
 }
 
+/* Sistema de Cupons */
+.cupons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.cupom-card {
+    background: var(--light);
+    border: 2px solid var(--gray-100);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.cupom-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.cupom-card.inactive {
+    opacity: 0.7;
+    border-color: var(--gray-300);
+}
+
+.cupom-header {
+    background: var(--gray-50);
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.cupom-code {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 0.5rem 0;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.cupom-type {
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.cupom-body {
+    padding: 1.5rem;
+}
+
+.cupom-desconto {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--success);
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.cupom-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.cupom-info-item {
+    text-align: center;
+}
+
+.cupom-info-label {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.cupom-info-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-top: 0.25rem;
+}
+
+.cupom-dates {
+    background: var(--gray-50);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+
+.cupom-dates strong {
+    color: var(--gray-800);
+}
+
+.cupom-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.cupom-status.ativo {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.cupom-status.inativo {
+    background: rgba(107, 114, 128, 0.1);
+    color: var(--gray-500);
+}
+
+.cupom-status.expirado {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.cupom-status.esgotado {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+.cupom-status.agendado {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
+}
+
+.cupom-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.cupom-actions .btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+}
+
+.cupom-progress {
+    margin: 1rem 0;
+}
+
+.cupom-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    margin-bottom: 0.5rem;
+}
+
+.cupom-progress-bar {
+    background: var(--gray-200);
+    border-radius: 6px;
+    height: 6px;
+    overflow: hidden;
+}
+
+.cupom-progress-fill {
+    background: var(--warning);
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.cupom-empty {
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray-500);
+}
+
+.cupom-empty i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--gray-300);
+}
+
+/* Formulário de Cupom */
+.form-control[name="codigo"] {
+    text-transform: uppercase;
+}
+
+select[multiple] {
+    min-height: 120px;
+}
+
+/* Sistema de Lotes */
+.lote-item {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: var(--gray-50);
+    position: relative;
+}
+
+.lote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.lote-number {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+.lote-remove {
+    background: var(--danger);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lote-remove:hover {
+    background: #dc2626;
+}
+
+.lote-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.lote-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.lote-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.lote-form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+.lote-form-group input,
+.lote-form-group textarea {
+    padding: 0.5rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.lote-form-group textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.lote-form-group input:focus,
+.lote-form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
 /* Utilities */
 .hidden { display: none !important; }
 .text-center { text-align: center; }
