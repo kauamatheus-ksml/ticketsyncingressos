@@ -1,0 +1,13 @@
+2025-03-12 08:35:17 - Start webhook_transparente.php
+2025-03-12 08:35:18 - Notificação recebida: null
+2025-03-12 08:35:18 - Notificação ignorada (sem type=payment válido).
+2025-03-12 12:35:51 - Start teste_webhook.php
+2025-04-21 22:06:24 - Start webhook_transparente.php
+2025-04-21 22:06:25 - Notificação recebida: null
+2025-04-21 22:06:25 - Notificação ignorada (sem type=payment válido).
+2025-04-21 22:07:14 - Start webhook_transparente.php
+2025-04-21 22:07:14 - Notificação recebida: null
+2025-04-21 22:07:14 - Notificação ignorada (sem type=payment válido).
+2025-04-21 22:10:57 - Start webhook_transparente.php
+2025-04-21 22:10:57 - Notificação recebida: null
+2025-04-21 22:10:57 - Notificação ignorada (sem type=payment válido).

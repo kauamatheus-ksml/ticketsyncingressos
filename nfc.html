@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Leitura NFC via Celular</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #nfcResult {
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #f9f9f9;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Leitura NFC</h1>
+    <p>
+      Clique em "Iniciar Leitura NFC" para capturar os dados do cartão.
+      <br>
+      (Apenas tags NFC de 13,56 MHz são suportadas)
+    </p>
+    <button id="startNfc">Iniciar Leitura NFC</button>
+    <div id="nfcResult" style="display: none;"></div>
+    <button id="copyBtn" style="display: none;">Copiar Informações</button>
+  </div>
+
+  <script>
+    const startNfcBtn = document.getElementById('startNfc');
+    const nfcResultDiv = document.getElementById('nfcResult');
+    const copyBtn = document.getElementById('copyBtn');
+
+    async function startNFC() {
+      // Verifica se o navegador suporta a API Web NFC
+      if ('NDEFReader' in window) {
+        try {
+          const ndef = new NDEFReader();
+          await ndef.scan();
+          nfcResultDiv.style.display = 'block';
+          nfcResultDiv.innerText = "Aguardando leitura NFC...";
+          ndef.addEventListener("readingerror", () => {
+            nfcResultDiv.innerText = "Erro na leitura do NFC. Tente novamente.";
+          });
+          ndef.addEventListener("reading", event => {
+            let recordsText = "";
+            for (const record of event.message.records) {
+              if (record.recordType === "text") {
+                const textDecoder = new TextDecoder(record.encoding);
+                recordsText += textDecoder.decode(record.data) + "\n";
+              } else {
+                recordsText += `Tipo: ${record.recordType}\n`;
+              }
+            }
+            nfcResultDiv.innerText = recordsText || "Nenhum dado lido.";
+            copyBtn.style.display = "block";
+          });
+        } catch (error) {
+          nfcResultDiv.style.display = 'block';
+          nfcResultDiv.innerText = "Erro ao iniciar a leitura NFC: " + error;
+        }
+      } else {
+        nfcResultDiv.style.display = 'block';
+        nfcResultDiv.innerText = "Web NFC não é suportado neste dispositivo/browser.";
+      }
+    }
+
+    startNfcBtn.addEventListener('click', startNFC);
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(nfcResultDiv.innerText);
+        alert("Informações copiadas!");
+      } catch (err) {
+        alert("Erro ao copiar as informações: " + err);
+      }
+    });
+  </script>
+</body>
+</html>

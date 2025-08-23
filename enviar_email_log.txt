@@ -1,0 +1,16 @@
+2025-03-20 16:00:57 - Start pdv.php
+2025-03-20 16:01:06 - Start pdv.php
+2025-03-20 16:03:58 - Start pdv.php
+2025-03-20 16:04:44 - Start pdv.php
+2025-03-20 16:04:45 - PDF salvo em: C:\Users\KAOS - PC\Documents\app\INGRESSOS/pdfs/ingresso_order_67dc66cc9f9ef.pdf
+2025-03-20 16:04:47 - ERRO AO ENVIAR E‑MAIL: SMTP Error: The following recipients failed: kauanupix@gmail.com: <contato@ticketsync.com>: Sender address rejected: not owned by user kaua@ticketsync.com.br
+
+2025-03-20 16:08:43 - Start pdv.php
+2025-03-20 16:08:43 - PDF salvo em: C:\Users\KAOS - PC\Documents\app\INGRESSOS/pdfs/ingresso_order_67dc67bb328b2.pdf
+2025-03-20 16:08:46 - E‑MAIL enviado para kauanupix@gmail.com (INGRESSO APROVADO).
+2025-03-20 16:19:38 - Start pdv.php
+2025-03-20 16:19:38 - PDF salvo em: C:\Users\KAOS - PC\Documents\app\INGRESSOS/pdfs/ingresso_order_67dc6a4a26c8d.pdf
+2025-03-20 16:19:41 - E‑MAIL enviado para kauanupix@gmail.com (INGRESSO APROVADO).
+2025-03-20 16:21:39 - Start pdv.php
+2025-03-20 16:21:39 - PDF salvo em: C:\Users\KAOS - PC\Documents\app\INGRESSOS/pdfs/ingresso_order_67dc6ac331cc6.pdf
+2025-03-20 16:21:42 - E‑MAIL enviado para kauanupix@gmail.com (INGRESSO APROVADO).

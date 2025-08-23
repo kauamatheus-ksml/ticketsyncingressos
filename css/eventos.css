@@ -1,0 +1,334 @@
+/* --------------------------------------------------
+   TicketSync – Eventos (Admin)
+   Arquivo: css/eventos.css
+   Observação:
+   – Nenhum estilo global em html/body.
+   – Somente classes únicas (prefixo ev-) ou já existentes no markup.
+   – Responsivo, moderno, com micro‑animações.
+   -------------------------------------------------- */
+
+/* ========= LAYOUT BASE ========= */
+.eventos-body {
+  --ev-primary: #002F6D;
+  --ev-primary-dark: #FF9202;
+  --ev-secondary: #002F6D;
+  --ev-bg: #FFFFFF;
+  --ev-text: #371f1f;
+  --ev-card-bg: #ffffff;
+  --ev-border: #e5e7eb;
+
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--ev-bg);
+  color: var(--ev-text);
+}
+
+.eventos-body *,
+.eventos-body *::before,
+.eventos-body *::after {
+  box-sizing: border-box;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.6s ease both;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ev-primary);
+}
+
+/* ========= BOTÕES ========= */
+.open-form-button,
+.create-form-submit,
+.cancel-button,
+.edit-button,
+.delete-button,
+.event-form-submit {
+  cursor: pointer;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.open-form-button {
+  background: linear-gradient(135deg, var(--ev-primary) 0%, var(--ev-secondary) 100%);
+  color: #fff;
+}
+.open-form-button:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+.create-form-submit,
+.event-form-submit {
+  background: var(--ev-primary);
+  color: #fff;
+}
+.create-form-submit:hover,
+.event-form-submit:hover { transform: translateY(-2px); }
+
+.cancel-button {
+  background: #9ca3af;
+  color: #fff;
+}
+.cancel-button:hover { filter: brightness(1.1); }
+
+.edit-button {
+  background: var(--ev-primary-dark);
+  color: #fff;
+}
+.edit-button:hover { filter: brightness(1.15); }
+
+.delete-button {
+  background: #dc2626;
+  color: #fff;
+}
+.delete-button:hover { filter: brightness(1.15); }
+
+/* ========= TOAST ========= */
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 9999;
+}
+.toast {
+  min-width: 260px;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  color: #fff;
+  font-weight: 500;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  opacity: 0.95;
+  animation: slideIn 0.4s ease;
+}
+.toast-success { background: var(--ev-primary); }
+.toast-error   { background: #dc2626; }
+
+@keyframes slideIn {
+  from { transform: translateX(120%); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 0.95; }
+}
+
+/* ========= FORM CADASTRO ========= */
+.create-form-area {
+  animation: fadeInUp 0.5s ease both;
+}
+
+.form-panel {
+  background: var(--ev-card-bg);
+  border: 1px solid var(--ev-border);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.create-form-title,
+.event-form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--ev-primary);
+}
+
+.form-group,
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-row {
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.form-col { flex: 1 1 0; display: flex; flex-direction: column; gap: 0.5rem; }
+
+.create-form-label,
+.event-form-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.create-form-input,
+.create-form-textarea,
+.event-form-input,
+.event-form-textarea,
+.event-file-input {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--ev-border);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.create-form-input:focus,
+.create-form-textarea:focus,
+.event-form-input:focus,
+.event-form-textarea:focus {
+  outline: none;
+  border-color: var(--ev-primary);
+}
+
+.create-form-textarea,
+.event-form-textarea { min-height: 120px; resize: vertical; }
+
+.form-divider { height: 1px; background: var(--ev-border); margin: 1.5rem 0; }
+
+.form-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* ========= EVENT LIST ========= */
+.event-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ev-primary-dark);
+}
+
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.event-item {
+  display: flex;
+  flex-direction: column;
+  background: var(--ev-card-bg);
+  border: 1px solid var(--ev-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.event-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+
+.event-logo {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.event-logo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  background: var(--ev-border);
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.event-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+.status-approved   { color: #16a34a; font-weight: 700; }
+.status-disapproved { color: #dc2626; font-weight: 700; }
+.status-pending     { color: #d97706; font-weight: 700; }
+
+.master-info {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--ev-border);
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.event-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ========= MODAL ========= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9998;
+  animation: fadeIn 0.3s ease both;
+}
+
+.modal-content {
+  background: var(--ev-card-bg);
+  border-radius: 1rem;
+  width: 95%;
+  max-width: 640px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  animation: zoomIn 0.35s ease both;
+}
+
+.close-modal-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ev-text);
+  transition: color 0.2s ease;
+}
+.close-modal-button:hover { color: var(--ev-primary); }
+
+/* ========= ANIMAÇÕES ========= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ========= RESPONSIVIDADE ========= */
+@media (max-width: 768px) {
+  .form-row { flex-direction: column; }
+  .event-logo { height: 160px; }
+  .modal-content { padding: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .open-form-button { width: 100%; }
+  .page-title { font-size: 1.5rem; }
+  .event-info { font-size: 0.85rem; }
+}

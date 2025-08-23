@@ -1,0 +1,72 @@
+<!-- pagamento_pix.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento PIX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #pixQrCode {
+            width: 250px;
+            height: 250px;
+            margin-top: 20px;
+        }
+        #pixCopiaCola {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Pagamento via PIX</h2>
+    <p>Escaneie o QR Code abaixo ou copie a chave PIX:</p>
+
+    <!-- Se o campo 'qrCode' vier null, geramos o QR Code a partir do link do PIX Copia e Cola -->
+    <img id="pixQrCode" src="" alt="QR Code PIX">
+    <br>
+    
+    <input type="text" id="pixCopiaCola" readonly>
+    <br>
+    <button onclick="copiarChavePix()">Copiar Chave PIX</button>
+
+    <script>
+        // Buscar os dados do pagamento PIX
+        fetch('criar_pagamento_pix.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.pixCopiaCola) {
+                    let linkPix = data.pixCopiaCola;
+                    // Gerar o QR Code via Google Charts
+                    let qrCodeUrl = "https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=" + encodeURIComponent(linkPix);
+                    document.getElementById('pixQrCode').src = qrCodeUrl;
+                    document.getElementById('pixCopiaCola').value = linkPix;
+                } else {
+                    alert('Erro ao gerar pagamento PIX.');
+                }
+            });
+
+        // Função para copiar o PIX Copia e Cola
+        function copiarChavePix() {
+            let copiaCola = document.getElementById("pixCopiaCola");
+            copiaCola.select();
+            document.execCommand("copy");
+            alert("Chave PIX copiada!");
+        }
+    </script>
+
+</body>
+</html>

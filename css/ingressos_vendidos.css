@@ -1,0 +1,182 @@
+/*ingressos_vendidos.css*/
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #002f6d;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --error-color: #e74c3c;
+    --light-bg: #f8f9fa;
+    --text-color: #34495e;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+  h1 {
+    color: var(--primary-color);
+    text-align: center;
+    padding: 20px;
+    margin: 30px 0;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  h1 i {
+    margin-right: 10px;
+    color: var(--secondary-color);
+  }
+  .filtro-container {
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+  }
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+  select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: white;
+  }
+  select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  }
+  .tabela-container {
+    background: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+  }
+  tr:hover {
+    background-color: #f8f9fa;
+  }
+  .status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .status[data-status="paid"] {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  .status[data-status="pending"] {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  .action-btn {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.85em;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+  }
+  .edit-button {
+    background-color: #3498db;
+  }
+  .promotor-delete-button {
+    background-color: #e74c3c;
+  }
+  .promotor-resent-button {
+    background-color: #f39c12;
+  }
+  .action-btn:hover {
+    opacity: 0.9;
+  }
+  .nenhum-resultado {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+  }
+  /* Exemplo de estilo para o botão IMPRIMIR LISTA */
+  .imprimir-lista-btn {
+    padding: 8px 12px;
+    font-size: 0.5em;
+    background-color: var(--secondary-color, #002f6d);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 15px;
+  }
+  .imprimir-lista-btn:hover {
+    opacity: 0.9;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 10px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 8px;
+      font-size: 0.9em;
+    }
+    .status {
+      padding: 4px 8px;
+    }
+    td:nth-child(3),
+    td:nth-child(4),
+    th:nth-child(3),
+    th:nth-child(4) {
+      display: none;
+    }
+  }
+  @media (max-width: 480px) {
+    select {
+      font-size: 14px;
+    }
+    .filtro-container {
+      padding: 15px;
+    }
+    td:nth-child(5),
+    th:nth-child(5) {
+      display: none;
+    }
+  }

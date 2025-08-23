@@ -1,0 +1,275 @@
+/* meus_ingressos.css */
+:root {
+  --primary-color: #4a6cfa;
+  --primary-dark: #3a56d4;
+  --secondary-color: #f8f9fa;
+  --accent-color: #ff7b54;
+  --text-color: #333333;
+  --text-light: #666666;
+  --border-color: #dddddd;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f7fb;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Conteúdo Principal */
+.main-content {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.ingressos-container {
+  padding: 20px 0;
+}
+
+.ingressos-container h2 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: var(--primary-dark);
+  text-align: center;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.ingressos-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+}
+
+/* Grid de Cards */
+.ingressos-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+/* Estilo dos Cards */
+.ingresso-card {
+  background: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ingresso-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.ingresso-card.nao-clicavel {
+  opacity: 0.75;
+  transform: none;
+}
+
+.ingresso-card.nao-clicavel:hover {
+  transform: none;
+  box-shadow: var(--shadow);
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+  height: 160px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.ingresso-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 20px !important;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: var(--primary-dark);
+  transition: var(--transition);
+}
+
+.ingresso-card:hover .card-body h3 {
+  color: var(--accent-color);
+}
+
+.card-body p {
+  margin-bottom: 10px;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.card-body p strong {
+  color: var(--text-color);
+  margin-right: 5px;
+}
+
+/* Status e Validação */
+.fa-circle-check {
+  color: var(--success-color) !important;
+  animation: pulse 2s infinite;
+}
+
+.fa-circle-xmark {
+  color: var(--danger-color) !important;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Mensagem de Nenhum Ingresso */
+.no-ingressos {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--secondary-color);
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  color: var(--text-light);
+  box-shadow: var(--shadow);
+  border: 1px dashed var(--border-color);
+  margin-top: 20px;
+}
+
+/* Animação de Entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ingressos-cards {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.ingresso-card {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.ingresso-card:nth-child(1) { animation-delay: 0.1s; }
+.ingresso-card:nth-child(2) { animation-delay: 0.2s; }
+.ingresso-card:nth-child(3) { animation-delay: 0.3s; }
+.ingresso-card:nth-child(4) { animation-delay: 0.4s; }
+.ingresso-card:nth-child(5) { animation-delay: 0.5s; }
+.ingresso-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .ingressos-cards {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  
+  .card-body {
+    padding: 15px !important;
+  }
+  
+  .ingressos-container h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ingressos-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .ingressos-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .main-content {
+    padding: 0 15px;
+  }
+  
+  .card-image {
+    height: 140px;
+  }
+}
+
+/* Order ID formato de ticket */
+.card-body p:nth-child(3) {
+  background: #f1f5ff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border-left: 3px solid var(--primary-color);
+  font-family: monospace;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+/* Efeito hover para validação */
+.ingresso-card:hover .fa-circle-check,
+.ingresso-card:hover .fa-circle-xmark {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+/* Badge de status para eventos cancelados ou pendentes */
+.ingresso-card.nao-clicavel::before {
+  content: "Indisponível";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(220, 53, 69, 0.9);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

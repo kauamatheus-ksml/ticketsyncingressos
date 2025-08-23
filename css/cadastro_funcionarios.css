@@ -1,0 +1,290 @@
+:root {
+    --primary-color: #2A2A72;
+    --secondary-color: #009FFD;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --text-color: #333;
+    --bg-light: #f4f6f9;
+    --transition: all 0.3s ease;
+    --border-radius: 5px;
+  }
+  
+  /* RESET E FONTE PADRÃO */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  /* BACKGROUND E COR DO CORPO */
+  .staff-page-body {
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    padding: 15px;
+  }
+  
+  /* CONTAINER PRINCIPAL */
+  .staff-container {
+    width: 95%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .staff-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  
+  .staff-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* BOTÃO PARA ABRIR MODAL DE CRIAÇÃO */
+  .open-create-modal-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    display: block;
+    margin: 0 auto 20px auto; /* centralizado */
+  }
+  .open-create-modal-button:hover {
+    background-color: #1a1a4a;
+  }
+  
+  /* TÍTULOS DA SESSÃO */
+  .staff-container h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+  }
+  
+  /* FORMULÁRIO */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .staff-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  
+  .staff-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+  }
+  
+  .staff-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(42, 42, 114, 0.2);
+    outline: none;
+  }
+  
+  .staff-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    display: block;
+    margin: 0 auto;
+  }
+  .staff-button:hover {
+    background-color: #1a1a4a;
+  }
+  
+  /* TABELA DE FUNCIONÁRIOS */
+  .staff-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .staff-table th,
+  .staff-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .staff-table th {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+  
+  .staff-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .staff-no-record {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  /* BOTÕES EDITAR E EXCLUIR */
+  .staff-edit-button,
+  .staff-delete-button {
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 8px 16px;
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: var(--transition);
+  }
+  
+  .staff-edit-button {
+    background-color: var(--secondary-color);
+    color: #fff;
+  }
+  .staff-edit-button:hover {
+    filter: brightness(0.9);
+  }
+  
+  .staff-delete-button {
+    background-color: var(--danger-color);
+    color: #fff;
+  }
+  .staff-delete-button:hover {
+    filter: brightness(0.9);
+  }
+  
+  /* MODAIS */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: none;         /* Oculto por padrão */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(3px);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modalOpen 0.3s ease;
+  }
+  
+  /* Animação de aparição do modal */
+  @keyframes modalOpen {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1);   opacity: 1; }
+  }
+  
+  .close-modal-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+  }
+  
+  .modal-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+  }
+  
+  /* RESPONSIVIDADE PARA TELAS MÉDIAS */
+  @media (max-width: 768px) {
+    .staff-container {
+      padding: 20px;
+    }
+    .staff-label, .staff-input, .staff-button,
+    .staff-table th, .staff-table td {
+      font-size: 14px;
+    }
+    .staff-edit-button, .staff-delete-button {
+      padding: 6px 12px;
+      font-size: 13px;
+    }
+  }
+  
+  /* RESPONSIVIDADE "SEM ARRASTAR" - CADA LINHA VIROU BLOCO */
+  @media (max-width: 600px) {
+    .staff-table,
+    .staff-table thead,
+    .staff-table tbody,
+    .staff-table th,
+    .staff-table td,
+    .staff-table tr {
+      display: block;
+      width: 100%;
+    }
+  
+    .staff-table thead tr {
+      /* Esconde o cabeçalho em telas pequenas */
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  
+    .staff-table tr {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: var(--border-radius);
+      background-color: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    }
+  
+    .staff-table td {
+      border: none;
+      position: relative;
+      padding-left: 45%;
+      text-align: left;
+    }
+  
+    .staff-table td:before {
+      position: absolute;
+      left: 15px;
+      width: 40%;
+      white-space: nowrap;
+      font-weight: bold;
+      color: var(--text-color);
+      font-size: 13px;
+    }
+  
+    /* Rotulos para cada coluna (ajuste se alterar as colunas) */
+    .staff-table td:nth-of-type(1):before { content: "Nome"; }
+    .staff-table td:nth-of-type(2):before { content: "E-mail"; }
+    .staff-table td:nth-of-type(3):before { content: "Data de Cadastro"; }
+    .staff-table td:nth-of-type(4):before { content: "Ações"; }
+  }
+  

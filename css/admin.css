@@ -1,0 +1,252 @@
+/* Reset básico e variáveis */
+:root {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --secondary-color: #FF9202;
+  --accent-color: #e74c3c;
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-color: #333333;
+  --text-secondary: #7f8c8d;
+  --shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --border-radius: 12px;
+  --spacing: 20px;
+}
+
+.admin-page-body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Container principal */
+.admin-container {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 var(--spacing);
+}
+
+/* Seção de boas-vindas */
+.admin-welcome {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  animation: fadeIn 0.8s ease;
+}
+
+.admin-welcome-heading {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.admin-welcome p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+/* Grid de cards do menu */
+.admin-menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  animation: slideUp 0.8s ease;
+}
+
+/* Cards individuais */
+.admin-menu-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.admin-menu-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.admin-menu-card:hover::before {
+  transform: scaleX(1);
+}
+
+.admin-card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.admin-card-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.admin-menu-card:hover .admin-card-icon {
+  color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+/* Cards específicos com cores diferentes */
+.admin-menu-card:nth-child(3n+1) .admin-card-icon {
+  color: var(--primary-color);
+}
+
+.admin-menu-card:nth-child(3n+2) .admin-card-icon {
+  color: var(--secondary-color);
+}
+
+.admin-menu-card:nth-child(3n+3) .admin-card-icon {
+  color: var(--accent-color);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries para responsividade */
+@media (max-width: 1200px) {
+  .admin-menu-container {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-menu-container {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  
+  .admin-menu-card {
+    height: 160px;
+    padding: 1.2rem;
+  }
+  
+  .admin-card-icon {
+    font-size: 2rem;
+  }
+  
+  .admin-card-title {
+    font-size: 1rem;
+  }
+  
+  .admin-welcome-heading {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-menu-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .admin-menu-card {
+    height: 140px;
+    padding: 1rem;
+  }
+  
+  .admin-card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .admin-welcome {
+    padding: 1.5rem;
+  }
+  
+  .admin-welcome-heading {
+    font-size: 1.5rem;
+  }
+  
+  .admin-welcome p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .admin-menu-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Efeito de loading para os cards */
+.admin-menu-card {
+  position: relative;
+}
+
+.admin-menu-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.5s ease;
+}
+
+.admin-menu-card:hover::after {
+  width: 100%;
+}
+
+/* Modo escuro - se quiser implementar futuramente com um toggle */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #fff;
+    --card-bg: #fff;
+    --text-color: #e6e6e6;
+    --text-secondary: #b0b0b0;
+    --shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .admin-welcome {
+    background: linear-gradient(135deg, #002F6D, #0f3460);
+  }
+}

@@ -1,0 +1,138 @@
+/* =============== FOOTER =============== */
+.footer-container {
+  background-color: #002F6D;
+  color: var(--white);
+  padding: 40px 20px;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer-container__content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+}
+
+.footer-container__section {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+/* Sobre */
+.footer-container__section--about .footer-logo {
+  width: 140px;
+  margin-bottom: 10px;
+}
+.footer-container__section--about .footer-description {
+  line-height: 1.6;
+  color: white;
+}
+
+/* Links rápidos */
+.footer-container__section--links .footer-title,
+.footer-container__section--certificates .footer-title,
+.footer-container__section--contact .footer-title {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: var(--white);
+}
+.footer-container__section--links .footer-links,
+.footer-container__section--contact .footer-contact {
+  list-style: none;
+  padding: 0;
+}
+.footer-container__section--links .footer-links li,
+.footer-container__section--contact .footer-contact li {
+  margin-bottom: 8px;
+}
+.footer-container__section--links .footer-links a,
+.footer-container__section--contact .footer-contact a {
+  color: #fff;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.footer-container__section--links .footer-links a:hover,
+.footer-container__section--contact .footer-contact a:hover {
+  color: var(--white);
+}
+
+/* Certificados / Selos */
+.footer-container__section--certificates .certificate-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.footer-container__section--certificates .certificate-icon {
+  width: 50px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+/* Rodapé inferior */
+.footer-container__bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 15px;
+  font-size: 0.9rem;
+  color: #FFFFFF;
+}
+
+/* Botão “Voltar ao Topo” */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--transition), transform var(--transition);
+  z-index: 1000;
+}
+.back-to-top:hover {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+/* =============== RESPONSIVIDADE =============== */
+@media (max-width: 768px) {
+  .footer-container__content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .footer-container {
+    padding: 30px 15px;
+  }
+  .footer-container__bottom {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-container {
+    padding: 20px 10px;
+  }
+  .footer-container__section {
+    min-width: auto;
+  }
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}

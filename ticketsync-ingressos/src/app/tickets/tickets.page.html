@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Meus Ingressos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-text color="primary">
+    <h2>Bem-vindo, {{ clienteNome }}!</h2>
+  </ion-text>
+  <ion-spinner *ngIf="loading" name="crescent" color="primary"></ion-spinner>
+  <div *ngIf="!loading && tickets.length === 0">
+    <p>Nenhum ingresso encontrado.</p>
+  </div>
+  <ion-list *ngIf="!loading && tickets.length > 0">
+    <ion-item *ngFor="let ticket of tickets">
+      <ion-label>
+        <h2>Order: {{ ticket.order_id }}</h2>
+        <p>Nome: {{ ticket.nome }} {{ ticket.sobrenome }}</p>
+        <p>Valor: R$ {{ ticket.valor_total | number:'1.2-2' }}</p>
+        <p>Status: {{ ticket.status }}</p>
+        <p>Ticket Code: {{ ticket.ticket_code ? ticket.ticket_code : 'N/A' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

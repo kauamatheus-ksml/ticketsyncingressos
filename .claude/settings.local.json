@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git merge:*)",
+      "Bash(git reset:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebSearch",
+      "Bash(composer:*)",
+      "Bash(touch:*)",
+      "Bash(del client_login.php)",
+      "Bash(php:*)",
+      "Bash(mv:*)",
+      "Bash(del \"C:\\Users\\KAOS - PC\\Documents\\app\\INGRESSOS\\clientes_nome.php\")",
+      "Bash(del \"C:\\Users\\KAOS - PC\\Documents\\app\\INGRESSOS\\css\\clientes.css\")",
+      "Bash(rg:*)",
+      "Bash(git rm:*)",
+      "Bash(git filter-branch:*)",
+      "Bash(git checkout:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

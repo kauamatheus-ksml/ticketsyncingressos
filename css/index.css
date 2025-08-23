@@ -1,0 +1,525 @@
+/* css/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #002F6D;
+  --secondary-color: #0075eb;
+  --accent-color: #7209b7;
+  --success-color: #4caf50;
+  --warning-color: #ff9800;
+  --error-color: #f44336;
+  --background-color: #f8f9fa;
+  --text-color: #343a40;
+  --light-text: #6c757d;
+  --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  --border-radius: 10px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Header Styles */
+header {
+  background-color: white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 50px;
+  transition: var(--transition);
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.login-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+  box-shadow: 0 4px 6px rgba(67, 97, 238, 0.15);
+}
+
+.login-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(67, 97, 238, 0.2);
+}
+
+/* Carousel Styles */
+.fullwidth-carousel {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  overflow: hidden;
+}
+
+.carousel-item.active {
+  opacity: 1;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 8s ease;
+}
+
+.carousel-item.active img {
+  transform: scale(1.05);
+}
+
+.carousel-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 50px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.carousel-item.active .carousel-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.carousel-overlay h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-overlay p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.carousel-indicator {
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  z-index: 2;
+}
+
+/* Main Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.welcome {
+  text-align: center;
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeInUp 0.8s forwards;
+}
+
+.welcome h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.welcome p {
+  color: var(--light-text);
+  font-size: 1.1rem;
+}
+
+/* Alert Styles */
+.alert {
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 25px;
+  position: relative;
+  animation: slideIn 0.5s forwards;
+}
+
+.alert-success {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: var(--success-color);
+  border-left: 4px solid var(--success-color);
+}
+
+/* Search Bar */
+.search-bar {
+  margin-bottom: 30px;
+  position: relative;
+  opacity: 0;
+  animation: fadeInUp 0.8s 0.2s forwards;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 6px 15px rgba(67, 97, 238, 0.1);
+}
+
+#searchInput::placeholder {
+  color: #aaa;
+}
+
+/* Card Styles */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--hover-shadow);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.card-info p {
+  margin-bottom: 8px;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-info i {
+  color: var(--primary-color);
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.btn i {
+  font-size: 0.9rem;
+}
+
+.btn:first-child {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn:first-child:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: rgba(67, 97, 238, 0.1);
+}
+
+.text-center {
+  text-align: center;
+  padding: 30px 0;
+  color: var(--light-text);
+  font-size: 1.1rem;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsiveness */
+@media screen and (max-width: 992px) {
+  .fullwidth-carousel {
+    height: 400px;
+  }
+  
+  .carousel-overlay h2 {
+    font-size: 2rem;
+  }
+
+  .welcome h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fullwidth-carousel {
+    height: 350px;
+  }
+  
+  .carousel-overlay {
+    padding: 20px 30px;
+  }
+  
+  .carousel-overlay h2 {
+    font-size: 1.6rem;
+  }
+  
+  .carousel-overlay p {
+    font-size: 1rem;
+  }
+  
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header-container {
+    padding: 10px 15px;
+  }
+  
+  .logo img {
+    max-height: 40px;
+  }
+  
+  .fullwidth-carousel {
+    height: 280px;
+    margin-bottom: 30px;
+  }
+  
+  .carousel-overlay {
+    padding: 15px 20px;
+  }
+  
+  .carousel-overlay h2 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+  
+  .carousel-overlay p {
+    font-size: 0.9rem;
+  }
+  
+  .welcome h2 {
+    font-size: 1.5rem;
+  }
+  
+  .welcome p {
+    font-size: 1rem;
+  }
+  
+  .cards-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .card-actions {
+    flex-direction: column;
+  }
+  
+  .carousel-control {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+}

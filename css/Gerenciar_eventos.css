@@ -1,0 +1,604 @@
+/* ==== VARIÁVEIS CSS ==== */
+:root {
+  --primary-color: #002F6D;
+  --primary-dark: #002F6D;
+  --primary-light: #bbdefb;
+  --secondary-color: #ff9800;
+  --success-color: #4CAF50;
+  --danger-color: #f44336;
+  --warning-color: #FFC107;
+  --text-color: #333;
+  --light-text: #757575;
+  --light-bg: #f9f9f9;
+  --border-color: #e0e0e0;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --border-radius: 8px;
+}
+
+/* ==== ESTILOS GERAIS ==== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: var(--text-color);
+  line-height: 1.6;
+  padding-bottom: 40px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ==== CABEÇALHO ==== */
+.header {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin-bottom: 25px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.header:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header i {
+  font-size: 1.8rem;
+  opacity: 0.9;
+}
+
+/* ==== MENSAGENS DE STATUS ==== */
+.message {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  display: none;
+  animation: fadeInDown 0.5s ease;
+  position: relative;
+}
+
+.message.success {
+  background-color: rgba(76, 175, 80, 0.2);
+  border-left: 5px solid var(--success-color);
+  color: #2e7d32;
+}
+
+.message.error {
+  background-color: rgba(244, 67, 54, 0.2);
+  border-left: 5px solid var(--danger-color);
+  color: #c62828;
+}
+
+/* ==== TABELA ==== */
+.table-wrapper {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 30px;
+  transition: var(--transition);
+}
+
+.table-wrapper:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: var(--primary-dark);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+tr {
+  transition: var(--transition);
+}
+
+tr:hover {
+  background-color: rgba(33, 150, 243, 0.05);
+}
+
+/* Status das linhas */
+tr[data-status="aprovado"] {
+  border-left: 4px solid var(--success-color);
+}
+
+tr[data-status="desaprovado"] {
+  border-left: 4px solid var(--danger-color);
+}
+
+tr[data-status="pendente"] {
+  border-left: 4px solid var(--warning-color);
+}
+
+/* ==== IMAGENS DA TABELA ==== */
+.event-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.event-logo:hover {
+  transform: scale(1.1);
+}
+
+/* ==== LABELS DE STATUS ==== */
+.label-small {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 12px;
+  margin-top: 5px;
+}
+
+.status-approved {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #2e7d32;
+}
+
+.status-disapproved {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: #c62828;
+}
+
+.status-pending {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #f57f17;
+}
+
+/* ==== TOGGLES (SWITCH) ==== */
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.status-toggle, .carrossel-toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.status-toggle input, .carrossel-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: var(--success-color);
+}
+
+input:focus + .toggle-slider {
+  box-shadow: 0 0 1px var(--success-color);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(26px);
+}
+
+/* ==== BOTÕES DE AÇÃO ==== */
+.view-event {
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1.2rem;
+}
+
+.view-event:hover {
+  color: var(--primary-dark);
+  transform: scale(1.2);
+}
+
+/* ==== MENSAGEM SEM EVENTOS ==== */
+.no-events {
+  text-align: center;
+  padding: 60px 0;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.no-events i {
+  color: var(--light-text);
+  margin-bottom: 15px;
+}
+
+.no-events h3 {
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+}
+
+.no-events p {
+  color: var(--light-text);
+}
+
+/* ==== MODAL ==== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  max-width: 600px;
+  width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideIn 0.4s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 15px 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.close:hover {
+  transform: rotate(90deg);
+}
+
+#modalEventLogo {
+  max-width: 100%;
+  max-height: 200px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+#modalFields {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--primary-dark);
+}
+
+.form-group p {
+  padding: 8px 0;
+  color: var(--text-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.25);
+  outline: none;
+}
+
+#modalActions {
+  padding: 15px 20px;
+  background-color: #f5f7fa;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#modalActions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+#editButton {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#editButton:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+#deleteButton {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+#deleteButton:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+}
+
+#cancelEditButton {
+  background-color: #757575;
+  color: white;
+}
+
+#cancelEditButton:hover {
+  background-color: #616161;
+  transform: translateY(-2px);
+}
+
+/* ==== ANIMAÇÕES ==== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==== RESPONSIVIDADE ==== */
+@media (max-width: 1024px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  
+  table {
+    min-width: 900px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 5% auto;
+  }
+  
+  #modalEventLogo {
+    max-height: 150px;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .header {
+    padding: 15px;
+  }
+  
+  .header h1 {
+    font-size: 1.3rem;
+  }
+  
+  .label-small {
+    font-size: 0.7rem;
+  }
+  
+  #modalActions button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .form-group input, 
+  .form-group select, 
+  .form-group textarea {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==== HOVER EFFECTS ==== */
+@media (hover: hover) {
+  .toggle-slider:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-content button:active {
+    transform: scale(0.98);
+  }
+  
+  #modalEventLogo:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
+  }
+}
+
+/* ==== ANIMAÇÕES DE CARREGAMENTO ==== */
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.loading {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* ==== EFEITOS DE MUDANÇA DE STATUS ==== */
+.status-update {
+  animation: highlight 1s ease;
+}
+
+@keyframes highlight {
+  0% { background-color: rgba(255, 235, 59, 0.3); }
+  100% { background-color: transparent; }
+}
+
+/* ==== DARK MODE (opcional) ==== */
+@media (prefers-color-scheme: dark) {
+  .dark-mode {
+    --primary-color: #64b5f6;
+    --primary-dark: #1976d2;
+    --primary-light: #1e3a5f;
+    --text-color: #e0e0e0;
+    --light-text: #b0b0b0;
+    --light-bg: #1e1e1e;
+    --border-color: #333;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    
+    background-color: #121212;
+  }
+  
+  .dark-mode .table-wrapper,
+  .dark-mode .modal-content,
+  .dark-mode .no-events {
+    background-color: #1e1e1e;
+  }
+  
+  .dark-mode th {
+    background-color: #333;
+  }
+  
+  .dark-mode tr:hover {
+    background-color: #252525;
+  }
+  
+  .dark-mode #modalActions {
+    background-color: #1a1a1a;
+  }
+}

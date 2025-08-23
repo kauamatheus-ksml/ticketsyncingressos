@@ -1,0 +1,7 @@
+{
+  "name": "ticketsync-ingressos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,564 @@
+
+    /* Reset de margens/padding e box-sizing */
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    /* 
+      ============================================================================
+        NAVBAR (versão anterior)
+      ============================================================================
+    */
+    header {
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 2%;
+      border-bottom: 1px solid #ccc;
+    }
+    header .logo img {
+      height: 40px;
+      width: auto;
+    }
+    header nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    header nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 5px 8px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    header nav a:hover {
+      background: #ddd;
+    }
+    .user-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dropdown-btn {
+      cursor: pointer;
+      margin-left: 6px;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      min-width: 120px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+    }
+    .dropdown-content a {
+      color: #333;
+      display: block;
+      padding: 8px 10px;
+      text-decoration: none;
+      border-bottom: 1px solid #efefef;
+    }
+    .dropdown-content a:hover {
+      background-color: #f2f2f2;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Container principal */
+    .main-content {
+      padding: 20px 2%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Bloco de validação */
+    .ingressos-container {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    .welcome {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    .ingressos-container h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #002f6d;
+    }
+
+    /* Exibir informações do evento */
+    .evento-selecionado-info {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+    /* Botão de trocar evento */
+    .trocar-evento-btn {
+      background: #f39c12;
+      color: #fff;
+      display: inline-block;
+      margin-left: 10px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.2s ease;
+    }
+    .trocar-evento-btn:hover {
+      background: #e67e22;
+    }
+
+    /* Formulário de validação */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    form label {
+      font-weight: 600;
+      color: #444;
+    }
+    form input[type="text"], 
+    form input[type="number"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    form input:focus {
+      border-color: #002f6d;
+    }
+    form button[type="submit"] {
+      background: #002f6d;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: fit-content;
+    }
+    form button[type="submit"]:hover {
+      background: #0051b5;
+    }
+
+    /* Botões gerais */
+    .button-default {
+      background: #002f6d;
+      color: #fff;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin: 5px 0;
+    }
+    .button-default:hover {
+      background: #0051b5;
+    }
+
+    .qr-btn {
+      background: #26a65b;
+      margin-top: 5px;
+    }
+    .qr-btn:hover {
+      background: #2ecc71;
+    }
+
+    /* Modal do QR Code */
+    #qrModal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+    }
+    #qrModalContent {
+      background: #fff;
+      border-radius: 6px;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      animation: slideDown 0.3s ease-out;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+    #qrModalClose {
+      position: absolute; 
+      top: 10px; 
+      right: 15px; 
+      font-weight: bold; 
+      cursor: pointer;
+      font-size: 1.3rem;
+    }
+    #qrModalContent h3 {
+      margin-bottom: 15px;
+      color: #002f6d;
+    }
+    #qr-reader {
+      margin: 0 auto;
+    }
+
+    /* Modal do Código do Evento */
+    .event-code-modal-overlay {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.7);
+      align-items: center;
+      justify-content: center;
+    }
+    .event-code-modal {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: slideDown 0.3s ease-out;
+    }
+    .event-code-modal h3 {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+      color: #002f6d;
+    }
+    .event-code-modal form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .event-code-modal label {
+      font-weight: 600;
+      text-align: left;
+      margin-bottom: 0.2rem;
+      color: #444;
+    }
+    .event-code-modal input[type="number"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .event-code-modal input[type="number"]:focus {
+      border-color: #002f6d;
+    }
+    .event-code-modal button[type="submit"] {
+      background: #002f6d;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .event-code-modal button[type="submit"]:hover {
+      background: #0051b5;
+    }
+    .event-code-modal p.error {
+      color: #d00;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    /* Modal para Listar Participantes */
+    .listar-participantes-modal-overlay {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.7);
+      align-items: center;
+      justify-content: center;
+    }
+    .listar-participantes-modal {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      position: relative;
+      animation: slideDown 0.3s ease-out;
+    }
+    .listar-participantes-modal h3 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #002f6d;
+    }
+    .listar-participantes-modal .modal-content {
+      text-align: left;
+      max-height: 400px;
+      overflow-y: auto;
+      margin-top: 1rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fafafa;
+    }
+    .listar-participantes-modal .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    /* Estilo para a barra de pesquisa */
+    .search-bar {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    /* Tabela de participantes */
+    #participantTable {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+    #participantTable thead {
+      background: #eee;
+    }
+    #participantTable th, 
+    #participantTable td {
+      padding: 8px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+    #participantTable th {
+      font-weight: 600;
+      color: #444;
+    }
+
+    /* Responsividade geral */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+      header nav {
+        width: 100%;
+        margin-top: 10px;
+        gap: 10px;
+        justify-content: flex-start;
+      }
+      .main-content {
+        padding: 15px 5%;
+      }
+      .ingressos-container h2 {
+        font-size: 1.25rem;
+      }
+      form button[type="submit"],
+      .button-default,
+      .qr-btn {
+        width: 100%;
+        text-align: center;
+      }
+      .trocar-evento-btn {
+        margin-top: 10px;
+        display: inline-block;
+      }
+    }
+/* Estilos adicionais para validação de ingressos */
+
+/* Toast de notificação */
+.toast-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  z-index: 9999;
+  min-width: 280px;
+  max-width: 80%;
+  animation: toastSlideUp 0.3s ease-out;
+}
+
+.toast-notification.success {
+  background-color: #4CAF50;
+}
+
+.toast-notification.error {
+  background-color: #F44336;
+}
+
+.toast-notification.warning {
+  background-color: #FF9800;
+}
+
+.toast-notification.info {
+  background-color: #2196F3;
+}
+
+.toast-icon {
+  margin-right: 12px;
+  font-size: 1.2em;
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 14px;
+}
+
+.toast-fade-out {
+  animation: toastFadeOut 0.5s ease-out forwards;
+}
+
+@keyframes toastSlideUp {
+  from { transform: translate(-50%, 100px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+@keyframes toastFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Resultado da validação */
+.validation-result {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.validation-result.success {
+  background-color: #E8F5E9;
+  border-left: 4px solid #4CAF50;
+}
+
+.validation-result.error {
+  background-color: #FFEBEE;
+  border-left: 4px solid #F44336;
+}
+
+.validation-result.warning {
+  background-color: #FFF8E1;
+  border-left: 4px solid #FF9800;
+}
+
+.validation-icon {
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+.validation-message {
+  flex: 1;
+}
+
+/* Melhorias no modal de listar participantes */
+.listar-participantes-modal {
+  max-width: 90%;
+  width: 800px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#participantTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+#participantTable th {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+#participantTable td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#participantTable tr:hover {
+  background-color: #f5f5f5;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Melhorias de responsividade */
+@media (max-width: 768px) {
+  .listar-participantes-modal {
+    width: 95%;
+  }
+  
+  #participantTable th, 
+  #participantTable td {
+    padding: 8px 5px;
+    font-size: 14px;
+  }
+  
+  .search-bar {
+    padding: 8px;
+  }
+  
+  .toast-notification {
+    min-width: 250px;
+    max-width: 90%;
+  }
+}
+

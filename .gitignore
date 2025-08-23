@@ -1,0 +1,25 @@
+# Node
+node_modules/
+
+# Flutter/Dart
+**/doc/api/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+
+# Android
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+
+# IDEs & misc
+.vscode/
+.idea/
+*.log
+*.zip
+*.dll
+*.exe
+aplicativoitau.msi

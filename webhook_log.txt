@@ -1,0 +1,1223 @@
+ 2025-02-25 02:30:34 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102974975745"
+    },
+    "date_created": "2025-02-25T02:12:26Z",
+    "id": 119422320376,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 02:30:34 - SUCESSO: Pagamento 102974975745 atualizado para 'approved' (Pedido: pedido_67bd27003abee)
+2025-02-25 02:30:36 - E-MAIL enviado para kauamatheus1516@gmail.com (INGRESSO APROVADO).
+2025-02-25 02:44:26 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28835790822",
+    "topic": "merchant_order"
+}
+2025-02-25 02:44:26 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:44:27 - Notificação recebida: {
+    "action": "create",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "opened"
+    },
+    "date_created": "2025-02-24T22:44:25.891-04:00",
+    "id": "28835790822",
+    "live_mode": true,
+    "status": "opened",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 0
+}
+2025-02-25 02:44:27 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:44:27 - Notificação recebida: {
+    "resource": "102976560443",
+    "topic": "payment"
+}
+2025-02-25 02:44:27 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:44:27 - Notificação recebida: {
+    "action": "payment.created",
+    "api_version": "v1",
+    "data": {
+        "id": "102976560443"
+    },
+    "date_created": "2025-02-25T02:44:26Z",
+    "id": 119422508302,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 02:44:27 - SUCESSO: Pagamento 102976560443 atualizado para 'pending' (Pedido: pedido_67bd2e7fe8291)
+2025-02-25 02:44:28 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T22:44:25.891-04:00",
+    "id": "28835790822",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 1
+}
+2025-02-25 02:44:28 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:44:28 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28835790822",
+    "topic": "merchant_order"
+}
+2025-02-25 02:44:28 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:44:56 - Notificação recebida: {
+    "resource": "102976560443",
+    "topic": "payment"
+}
+2025-02-25 02:44:56 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:44:56 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102976560443"
+    },
+    "date_created": "2025-02-25T02:44:26Z",
+    "id": 119422530670,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 02:44:56 - SUCESSO: Pagamento 102976560443 atualizado para 'approved' (Pedido: pedido_67bd2e7fe8291)
+2025-02-25 02:44:57 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T22:44:25.891-04:00",
+    "id": "28835790822",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 02:44:57 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:44:57 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28835790822",
+    "topic": "merchant_order"
+}
+2025-02-25 02:44:57 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:44:57 - E-MAIL enviado para familialopes8280@gmail.com (INGRESSO APROVADO).
+2025-02-25 02:45:00 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102976560443"
+    },
+    "date_created": "2025-02-25T02:44:26Z",
+    "id": 119422530730,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 02:45:00 - Notificação recebida: {
+    "resource": "102976560443",
+    "topic": "payment"
+}
+2025-02-25 02:45:00 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:45:00 - SUCESSO: Pagamento 102976560443 atualizado para 'approved' (Pedido: pedido_67bd2e7fe8291)
+2025-02-25 02:45:00 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28835790822",
+    "topic": "merchant_order"
+}
+2025-02-25 02:45:00 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:45:01 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T22:44:25.891-04:00",
+    "id": "28835790822",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 02:45:01 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:45:01 - E-MAIL enviado para familialopes8280@gmail.com (INGRESSO APROVADO).
+2025-02-25 02:47:11 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28816778269",
+    "topic": "merchant_order"
+}
+2025-02-25 02:47:11 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:47:12 - Notificação recebida: {
+    "action": "create",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "opened"
+    },
+    "date_created": "2025-02-24T22:47:11.130-04:00",
+    "id": "28816778269",
+    "live_mode": true,
+    "status": "opened",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 0
+}
+2025-02-25 02:47:12 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:47:12 - Notificação recebida: {
+    "action": "payment.created",
+    "api_version": "v1",
+    "data": {
+        "id": "102976656511"
+    },
+    "date_created": "2025-02-25T02:47:11Z",
+    "id": 119422536954,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 02:47:12 - Notificação recebida: {
+    "resource": "102976656511",
+    "topic": "payment"
+}
+2025-02-25 02:47:12 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:47:12 - SUCESSO: Pagamento 102976656511 atualizado para 'pending' (Pedido: pedido_67bd2f1ae823a)
+2025-02-25 02:47:12 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28816778269",
+    "topic": "merchant_order"
+}
+2025-02-25 02:47:12 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:47:13 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T22:47:11.130-04:00",
+    "id": "28816778269",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 1
+}
+2025-02-25 02:47:13 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:47:36 - Notificação recebida: {
+    "resource": "102976656511",
+    "topic": "payment"
+}
+2025-02-25 02:47:36 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:47:36 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102976656511"
+    },
+    "date_created": "2025-02-25T02:47:11Z",
+    "id": 119422561952,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 02:47:36 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28816778269",
+    "topic": "merchant_order"
+}
+2025-02-25 02:47:36 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:47:36 - SUCESSO: Pagamento 102976656511 atualizado para 'approved' (Pedido: pedido_67bd2f1ae823a)
+2025-02-25 02:47:36 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T22:47:11.130-04:00",
+    "id": "28816778269",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 02:47:36 - Notificação ignorada (sem type=payment válido).
+2025-02-25 02:47:37 - E-MAIL enviado para familialopes8280@gmail.com (INGRESSO APROVADO).
+2025-02-25 02:48:37 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28816778269",
+    "topic": "merchant_order"
+}
+2025-02-25 02:48:37 - Notificação ignorada (sem type=payment válido).
+2025-02-25 08:05:50 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102971100677"
+    },
+    "date_created": "2025-02-25T01:04:39Z",
+    "id": 119364974561,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 08:05:50 - SUCESSO: Pagamento 102971100677 atualizado para 'approved' (Pedido: pedido_67bd171cc09bd)
+2025-02-25 08:05:51 - E-MAIL enviado para kauamatheus1516@gmail.com (INGRESSO APROVADO).
+2025-02-25 13:40:50 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102909084959"
+    },
+    "date_created": "2025-02-24T13:34:28Z",
+    "id": 119368575771,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 13:40:50 - Notificação recebida: {
+    "resource": "102909084959",
+    "topic": "payment"
+}
+2025-02-25 13:40:50 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:40:50 - SUCESSO: Pagamento 102909084959 atualizado para 'cancelled' (Pedido: pedido_67bc7559c7e00)
+2025-02-25 13:40:50 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28808086076",
+    "topic": "merchant_order"
+}
+2025-02-25 13:40:50 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:40:50 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T09:34:27.816-04:00",
+    "id": "28808086076",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 13:40:50 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:40:54 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102909084959"
+    },
+    "date_created": "2025-02-24T13:34:28Z",
+    "id": 119428944940,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 13:40:54 - SUCESSO: Pagamento 102909084959 atualizado para 'cancelled' (Pedido: pedido_67bc7559c7e00)
+2025-02-25 13:40:54 - Notificação recebida: {
+    "resource": "102909084959",
+    "topic": "payment"
+}
+2025-02-25 13:40:54 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:40:55 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28808086076",
+    "topic": "merchant_order"
+}
+2025-02-25 13:40:55 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:40:55 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T09:34:27.816-04:00",
+    "id": "28808086076",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 13:40:55 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:50:30 - Notificação recebida: {
+    "resource": "103308245264",
+    "topic": "payment"
+}
+2025-02-25 13:50:30 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:50:30 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103308245264"
+    },
+    "date_created": "2025-02-24T13:47:50Z",
+    "id": 119429096518,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 13:50:30 - SUCESSO: Pagamento 103308245264 atualizado para 'cancelled' (Pedido: pedido_67bc7876eae6f)
+2025-02-25 13:50:30 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28789482269",
+    "topic": "merchant_order"
+}
+2025-02-25 13:50:30 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:50:30 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T09:47:49.624-04:00",
+    "id": "28789482269",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 13:50:30 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:50:56 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103308320544"
+    },
+    "date_created": "2025-02-24T13:48:20Z",
+    "id": 119368748817,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 13:50:56 - Notificação recebida: {
+    "resource": "103308320544",
+    "topic": "payment"
+}
+2025-02-25 13:50:56 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:50:56 - SUCESSO: Pagamento 103308320544 atualizado para 'cancelled' (Pedido: pedido_67bc7896acf46)
+2025-02-25 13:50:57 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28808540436",
+    "topic": "merchant_order"
+}
+2025-02-25 13:50:57 - Notificação ignorada (sem type=payment válido).
+2025-02-25 13:50:57 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T09:48:19.850-04:00",
+    "id": "28808540436",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 13:50:57 - Notificação ignorada (sem type=payment válido).
+2025-02-25 14:01:39 - Notificação recebida: {
+    "resource": "102911102915",
+    "topic": "payment"
+}
+2025-02-25 14:01:39 - Notificação ignorada (sem type=payment válido).
+2025-02-25 14:01:39 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102911102915"
+    },
+    "date_created": "2025-02-24T13:58:35Z",
+    "id": 119368910809,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 14:01:39 - SUCESSO: Pagamento 102911102915 atualizado para 'cancelled' (Pedido: pedido_67bc7b0650290)
+2025-02-25 14:01:40 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T09:58:35.120-04:00",
+    "id": "28789831601",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 14:01:40 - Notificação ignorada (sem type=payment válido).
+2025-02-25 14:01:40 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28789831601",
+    "topic": "merchant_order"
+}
+2025-02-25 14:01:40 - Notificação ignorada (sem type=payment válido).
+2025-02-25 14:50:43 - Notificação recebida: {
+    "resource": "102915711787",
+    "topic": "payment"
+}
+2025-02-25 14:50:43 - Notificação ignorada (sem type=payment válido).
+2025-02-25 14:50:43 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102915711787"
+    },
+    "date_created": "2025-02-24T14:47:55Z",
+    "id": 119369707443,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 14:50:43 - SUCESSO: Pagamento 102915711787 atualizado para 'cancelled' (Pedido: pedido_67bc8689d3592)
+2025-02-25 14:50:44 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T10:47:55.410-04:00",
+    "id": "28791654165",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 14:50:44 - Notificação ignorada (sem type=payment válido).
+2025-02-25 14:50:44 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28791654165",
+    "topic": "merchant_order"
+}
+2025-02-25 14:50:44 - Notificação ignorada (sem type=payment válido).
+2025-02-25 15:15:29 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102918272747"
+    },
+    "date_created": "2025-02-24T15:12:09Z",
+    "id": 119370178491,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 15:15:29 - Notificação recebida: {
+    "resource": "102918272747",
+    "topic": "payment"
+}
+2025-02-25 15:15:29 - Notificação ignorada (sem type=payment válido).
+2025-02-25 15:15:30 - SUCESSO: Pagamento 102918272747 atualizado para 'cancelled' (Pedido: pedido_67bc8c3f49fac)
+2025-02-25 15:15:30 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28811679276",
+    "topic": "merchant_order"
+}
+2025-02-25 15:15:30 - Notificação ignorada (sem type=payment válido).
+2025-02-25 15:15:30 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T11:12:08.569-04:00",
+    "id": "28811679276",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 15:15:30 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:15:43 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102924576165"
+    },
+    "date_created": "2025-02-24T16:13:17Z",
+    "id": 119371346909,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:15:43 - Notificação recebida: {
+    "resource": "102924576165",
+    "topic": "payment"
+}
+2025-02-25 16:15:43 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:15:43 - SUCESSO: Pagamento 102924576165 atualizado para 'cancelled' (Pedido: pedido_67bc9a8db7cae)
+2025-02-25 16:15:44 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103322610756"
+    },
+    "date_created": "2025-02-24T16:11:54Z",
+    "id": 119371358439,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:15:44 - Notificação recebida: {
+    "resource": "103322610756",
+    "topic": "payment"
+}
+2025-02-25 16:15:44 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:15:44 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28814151114",
+    "topic": "merchant_order"
+}
+2025-02-25 16:15:44 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:15:44 - SUCESSO: Pagamento 103322610756 atualizado para 'cancelled' (Pedido: pedido_67bc9a3e74ad6)
+2025-02-25 16:15:44 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:13:16.830-04:00",
+    "id": "28814151114",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 16:15:44 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:15:45 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:11:53.606-04:00",
+    "id": "28814087524",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 16:15:45 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:15:46 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28814087524",
+    "topic": "merchant_order"
+}
+2025-02-25 16:15:46 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:20:34 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103323106240"
+    },
+    "date_created": "2025-02-24T16:16:29Z",
+    "id": 119431811486,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:20:34 - Notificação recebida: {
+    "resource": "103323106240",
+    "topic": "payment"
+}
+2025-02-25 16:20:34 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:20:34 - SUCESSO: Pagamento 103323106240 atualizado para 'cancelled' (Pedido: pedido_67bc9b4ed219e)
+2025-02-25 16:20:35 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28814266172",
+    "topic": "merchant_order"
+}
+2025-02-25 16:20:35 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:20:35 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:16:28.619-04:00",
+    "id": "28814266172",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 16:20:35 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:20:36 - Notificação recebida: {
+    "resource": "103323102046",
+    "topic": "payment"
+}
+2025-02-25 16:20:36 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:20:36 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103323102046"
+    },
+    "date_created": "2025-02-24T16:18:12Z",
+    "id": 119371447635,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:20:36 - SUCESSO: Pagamento 103323102046 atualizado para 'cancelled' (Pedido: pedido_67bc9bb977648)
+2025-02-25 16:20:37 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28795285003",
+    "topic": "merchant_order"
+}
+2025-02-25 16:20:37 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:20:37 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:18:12.326-04:00",
+    "id": "28795285003",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 16:20:37 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:20:39 - Notificação recebida: {
+    "resource": "103323039784",
+    "topic": "payment"
+}
+2025-02-25 16:20:39 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:20:39 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103323039784"
+    },
+    "date_created": "2025-02-24T16:17:22Z",
+    "id": 119431818826,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:20:39 - SUCESSO: Pagamento 103323039784 atualizado para 'cancelled' (Pedido: pedido_67bc9b88217dd)
+2025-02-25 16:20:40 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28795250067",
+    "topic": "merchant_order"
+}
+2025-02-25 16:20:40 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:20:40 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:17:21.654-04:00",
+    "id": "28795250067",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 16:20:40 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:21:04 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103323000410"
+    },
+    "date_created": "2025-02-24T16:15:30Z",
+    "id": 119371482383,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:21:04 - Notificação recebida: {
+    "resource": "103323000410",
+    "topic": "payment"
+}
+2025-02-25 16:21:04 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:21:05 - SUCESSO: Pagamento 103323000410 atualizado para 'cancelled' (Pedido: pedido_67bc9b0da1d38)
+2025-02-25 16:21:05 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28795178863",
+    "topic": "merchant_order"
+}
+2025-02-25 16:21:05 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:21:05 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:15:30.121-04:00",
+    "id": "28795178863",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 16:21:05 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:40:12 - Notificação recebida: {
+    "resource": "103324998538",
+    "topic": "payment"
+}
+2025-02-25 16:40:12 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:40:12 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103324998538"
+    },
+    "date_created": "2025-02-24T16:37:05Z",
+    "id": 119371837229,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:40:12 - SUCESSO: Pagamento 103324998538 atualizado para 'cancelled' (Pedido: pedido_67bca02449f72)
+2025-02-25 16:40:13 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:37:05.057-04:00",
+    "id": "28815015072",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 16:40:13 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:40:13 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28815015072",
+    "topic": "merchant_order"
+}
+2025-02-25 16:40:13 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:40:31 - Notificação recebida: {
+    "resource": "102926884265",
+    "topic": "payment"
+}
+2025-02-25 16:40:31 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:40:31 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "102926884265"
+    },
+    "date_created": "2025-02-24T16:38:05Z",
+    "id": 119432222152,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:40:31 - SUCESSO: Pagamento 102926884265 atualizado para 'cancelled' (Pedido: pedido_67bca05ad5aa8)
+2025-02-25 16:40:32 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28795993247",
+    "topic": "merchant_order"
+}
+2025-02-25 16:40:32 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:40:32 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:38:05.426-04:00",
+    "id": "28795993247",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 16:40:32 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:41:12 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103324998538"
+    },
+    "date_created": "2025-02-24T16:37:05Z",
+    "id": 119371874701,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:41:12 - Notificação recebida: {
+    "resource": "103324998538",
+    "topic": "payment"
+}
+2025-02-25 16:41:12 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:41:12 - SUCESSO: Pagamento 103324998538 atualizado para 'cancelled' (Pedido: pedido_67bca02449f72)
+2025-02-25 16:41:12 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28815015072",
+    "topic": "merchant_order"
+}
+2025-02-25 16:41:12 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:41:12 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:37:05.057-04:00",
+    "id": "28815015072",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 4
+}
+2025-02-25 16:41:12 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:50:28 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103325797542"
+    },
+    "date_created": "2025-02-24T16:45:34Z",
+    "id": 119432414304,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:50:28 - Notificação recebida: {
+    "resource": "103325797542",
+    "topic": "payment"
+}
+2025-02-25 16:50:28 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:50:28 - SUCESSO: Pagamento 103325797542 atualizado para 'cancelled' (Pedido: pedido_67bca2295a92a)
+2025-02-25 16:50:29 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28796251103",
+    "topic": "merchant_order"
+}
+2025-02-25 16:50:29 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:50:29 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:45:33.741-04:00",
+    "id": "28796251103",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 16:50:29 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:50:30 - Notificação recebida: {
+    "resource": "103326000982",
+    "topic": "payment"
+}
+2025-02-25 16:50:30 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:50:30 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103326000982"
+    },
+    "date_created": "2025-02-24T16:48:04Z",
+    "id": 119372050291,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:50:30 - SUCESSO: Pagamento 103326000982 atualizado para 'cancelled' (Pedido: pedido_67bca2a65458f)
+2025-02-25 16:50:31 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:48:03.932-04:00",
+    "id": "28815388728",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 3
+}
+2025-02-25 16:50:31 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:50:31 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28815388728",
+    "topic": "merchant_order"
+}
+2025-02-25 16:50:31 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:50:32 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103325797542"
+    },
+    "date_created": "2025-02-24T16:45:34Z",
+    "id": 119372040735,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 16:50:32 - Notificação recebida: {
+    "resource": "103325797542",
+    "topic": "payment"
+}
+2025-02-25 16:50:32 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:50:32 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28796251103",
+    "topic": "merchant_order"
+}
+2025-02-25 16:50:32 - Notificação ignorada (sem type=payment válido).
+2025-02-25 16:50:32 - SUCESSO: Pagamento 103325797542 atualizado para 'cancelled' (Pedido: pedido_67bca2295a92a)
+2025-02-25 16:50:33 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:45:33.741-04:00",
+    "id": "28796251103",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 4
+}
+2025-02-25 16:50:33 - Notificação ignorada (sem type=payment válido).
+2025-02-25 17:00:13 - Notificação recebida: {
+    "resource": "103326698188",
+    "topic": "payment"
+}
+2025-02-25 17:00:13 - Notificação ignorada (sem type=payment válido).
+2025-02-25 17:00:13 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103326698188"
+    },
+    "date_created": "2025-02-24T16:55:47Z",
+    "id": 119372195327,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 17:00:13 - SUCESSO: Pagamento 103326698188 atualizado para 'cancelled' (Pedido: pedido_67bca42ee10b9)
+2025-02-25 17:00:14 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28815637624",
+    "topic": "merchant_order"
+}
+2025-02-25 17:00:14 - Notificação ignorada (sem type=payment válido).
+2025-02-25 17:00:14 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:55:47.011-04:00",
+    "id": "28815637624",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 17:00:14 - Notificação ignorada (sem type=payment válido).
+2025-02-25 17:05:30 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103327104414"
+    },
+    "date_created": "2025-02-24T16:59:59Z",
+    "id": 119432692254,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-25 17:05:31 - Notificação recebida: {
+    "resource": "103327104414",
+    "topic": "payment"
+}
+2025-02-25 17:05:31 - Notificação ignorada (sem type=payment válido).
+2025-02-25 17:05:31 - SUCESSO: Pagamento 103327104414 atualizado para 'cancelled' (Pedido: pedido_67bca58bd8432)
+2025-02-25 17:05:31 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28815787898",
+    "topic": "merchant_order"
+}
+2025-02-25 17:05:31 - Notificação ignorada (sem type=payment válido).
+2025-02-25 17:05:31 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-24T12:59:59.360-04:00",
+    "id": "28815787898",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-25 17:05:31 - Notificação ignorada (sem type=payment válido).
+2025-02-26 10:21:29 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28855798277",
+    "topic": "merchant_order"
+}
+2025-02-26 10:21:29 - Notificação ignorada (sem type=payment válido).
+2025-02-26 10:21:29 - Notificação recebida: {
+    "action": "create",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "opened"
+    },
+    "date_created": "2025-02-26T06:21:28.205-04:00",
+    "id": "28855798277",
+    "live_mode": true,
+    "status": "opened",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 0
+}
+2025-02-26 10:21:29 - Notificação ignorada (sem type=payment válido).
+2025-02-26 10:21:29 - Notificação recebida: {
+    "action": "payment.created",
+    "api_version": "v1",
+    "data": {
+        "id": "103487703856"
+    },
+    "date_created": "2025-02-26T10:21:28Z",
+    "id": 119448009786,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-26 10:21:29 - Notificação recebida: {
+    "resource": "103487703856",
+    "topic": "payment"
+}
+2025-02-26 10:21:29 - Notificação ignorada (sem type=payment válido).
+2025-02-26 10:21:29 - SUCESSO: Pagamento 103487703856 atualizado para 'pending' (Pedido: pedido_67beeb1f24f6c)
+2025-02-26 10:21:30 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28855798277",
+    "topic": "merchant_order"
+}
+2025-02-26 10:21:30 - Notificação ignorada (sem type=payment válido).
+2025-02-26 10:21:30 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-26T06:21:28.205-04:00",
+    "id": "28855798277",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 1
+}
+2025-02-26 10:21:30 - Notificação ignorada (sem type=payment válido).
+2025-02-26 10:21:54 - Notificação recebida: {
+    "resource": "103487703856",
+    "topic": "payment"
+}
+2025-02-26 10:21:54 - Notificação ignorada (sem type=payment válido).
+2025-02-26 10:21:54 - Notificação recebida: {
+    "action": "payment.updated",
+    "api_version": "v1",
+    "data": {
+        "id": "103487703856"
+    },
+    "date_created": "2025-02-26T10:21:28Z",
+    "id": 119448046506,
+    "live_mode": true,
+    "type": "payment",
+    "user_id": "1061301725"
+}
+2025-02-26 10:21:54 - SUCESSO: Pagamento 103487703856 atualizado para 'approved' (Pedido: pedido_67beeb1f24f6c)
+2025-02-26 10:21:54 - Notificação recebida: {
+    "action": "update",
+    "application_id": "",
+    "data": {
+        "currency_id": "",
+        "marketplace": "MP-MKT-3202249576906512",
+        "status": "closed"
+    },
+    "date_created": "2025-02-26T06:21:28.205-04:00",
+    "id": "28855798277",
+    "live_mode": true,
+    "status": "closed",
+    "type": "topic_merchant_order_wh",
+    "user_id": 1061301725,
+    "version": 2
+}
+2025-02-26 10:21:54 - Notificação ignorada (sem type=payment válido).
+2025-02-26 10:21:54 - Notificação recebida: {
+    "resource": "https:\/\/api.mercadolibre.com\/merchant_orders\/28855798277",
+    "topic": "merchant_order"
+}
+2025-02-26 10:21:54 - Notificação ignorada (sem type=payment válido).
+2025-02-26 10:21:55 - E-MAIL enviado para kauapicpaypix@gmail.com (INGRESSO APROVADO).

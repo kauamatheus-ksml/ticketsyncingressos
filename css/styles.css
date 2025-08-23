@@ -1,0 +1,1919 @@
+
+/*ESTILOS PAGINA DE ADM*/
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+        body.admin-page-body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f3f4f6, #dfe9f3);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        div.admin-container {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        .admin-welcome-heading {
+            font-size: 28px;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        div.admin-menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        a.admin-menu-card {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #6B9DFE, #4A90E2);
+            color: #fff;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        a.admin-menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        i.admin-card-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        span.admin-card-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            div.admin-container {
+                padding: 15px;
+            }
+
+            .admin-welcome-heading {
+                font-size: 24px;
+            }
+
+            a.admin-menu-card {
+                width: 150px;
+                height: 150px;
+            }
+
+            i.admin-card-icon {
+                font-size: 30px;
+            }
+
+            span.admin-card-title {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            div.admin-container {
+                padding: 10px;
+            }
+
+            .admin-welcome-heading {
+                font-size: 20px;
+            }
+
+            div.admin-menu-container {
+                gap: 10px;
+            }
+
+            a.admin-menu-card {
+                width: 120px;
+                height: 120px;
+            }
+
+            i.admin-card-icon {
+                font-size: 24px;
+            }
+
+            span.admin-card-title {
+                font-size: 12px;
+            }
+        }
+
+
+/*ESTILOS DO HEADER DE ADM*/
+.admin-body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #f3f4f6, #dfe9f3);
+}
+
+.admin-header-container {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    z-index: 1000;
+    position: fixed;
+    
+}
+
+.admin-container-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-header-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.admin-nav-menu {
+    display: flex;
+    gap: 15px;
+}
+
+.admin-nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.admin-nav-link:hover {
+    background: linear-gradient(135deg, #6B9DFE, #4A90E2);
+    transform: translateY(-2px);
+}
+
+.admin-nav-link i {
+    font-size: 18px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .admin-header-title {
+        font-size: 20px;
+    }
+
+    .admin-nav-link {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .admin-nav-link i {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-header-container {
+        flex-direction: column;
+        align-items: ce;
+    }
+
+    .admin-nav-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .admin-nav-link {
+ 
+        justify-content: flex-start;
+    }
+}
+
+
+
+/* ESTILOS DO PERFIL */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+body.perfil-page-body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #f3f4f6, #dfe9f3);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.perfil-container {
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+
+    max-width: 1200px;
+}
+
+.perfil-titulo {
+    font-size: 28px;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.perfil-info {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.perfil-botao-editar {
+    font-size: 16px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6B9DFE, #4A90E2);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfil-botao-editar:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ESTILOS DO FORMULÁRIO DE EDIÇÃO PErfil*/
+.perfil-formulario {
+    display: none;
+    padding: 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.perfil-formulario-titulo {
+    font-size: 28px;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.perfil-formulario-label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.perfil-formulario-input {
+    font-size: 16px;
+    padding: 8px;
+    margin-bottom: 15px;
+
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.perfil-formulario-input:focus {
+    border-color: #4A90E2;
+}
+
+.perfil-formulario-submit {
+    font-size: 16px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6B9DFE, #4A90E2);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.perfil-formulario-submit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+/* Estilos principais */
+
+
+body.login-page-body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #f0f4f8, #d1e0e0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.login-heading {
+    color: #34495e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.login-form-label {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+}
+
+.login-form-input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.login-form-input:focus {
+    border-color: #3498db;
+}
+
+.login-form-submit {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form-submit:hover {
+    background-color: #2980b9;
+}
+
+.login-register-p {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.login-register-link {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+
+.login-register-link:hover {
+    text-decoration: underline;
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .login-heading {
+        font-size: 1.8rem;
+    }
+
+    .login-form-label {
+        font-size: 1rem;
+    }
+
+    .login-form-input {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .login-form-submit {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+
+    .login-register-p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Estilos principais */
+
+
+body.register-page-body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(120deg, #f0f4f8, #d1e0e0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+    
+}
+
+.register-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.register-heading {
+    color: #34495e;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.register-form-label {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+}
+
+.register-form-input,
+.register-form-file-input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.register-form-input:focus,
+.register-form-file-input:focus {
+    border-color: #3498db;
+}
+
+.register-form-submit {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 0;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-form-submit:hover {
+    background-color: #2980b9;
+}
+
+.register-login-link {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.register-login-link-a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+}
+
+.register-login-link-a:hover {
+    text-decoration: underline;
+}
+
+/* Animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .register-form-input, .register-form-file-input{
+        box-sizing: border-box;
+    }
+    .register-container {
+        padding: 20px;
+        width: 90%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .register-heading {
+        box-sizing: border-box;
+        font-size: 1.6rem;
+    }
+
+    .register-form-label {
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+
+    .register-form-input {
+        box-sizing: border-box;
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .register-form-submit {
+        box-sizing: border-box;
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+
+    .register-login-link {
+        box-sizing: border-box;
+        font-size: 0.9rem;
+    }
+}
+
+/* ESTILOS PARA A PÁGINA DE ADMIN */
+
+/* Corpo da página */
+.admin-page-body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg, #f3f4f6, #dfe9f3);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.clientes-registros-titulo,
+.cliente-info span {
+    font-family: sans-serif, Arial, Helvetica, sans-serif;
+}
+
+.clientes-registros-titulo {
+    font-size: 28px;
+    color: #34495e;
+    margin-top: 100px;
+ 
+    text-align: center;
+}
+
+.clientes-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cliente-item {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.cliente-id {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 18px;
+}
+
+.cliente-foto {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.cliente-info span {
+    display: block;
+    color: #555;
+    font-size: 16px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .clientes-lista {
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .cliente-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .cliente-id {
+        font-size: 16px;
+    }
+
+    .cliente-foto {
+        width: 50px;
+        height: 50px;
+    }
+
+    .cliente-info span {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .clientes-lista {
+        gap: 10px;
+    }
+    .clientes-registros-titulo{
+
+        margin-top: 200px
+    }
+
+    .cliente-item {
+        padding: 10px;
+    }
+
+    .cliente-id {
+        font-size: 14px;
+    }
+
+    .cliente-foto {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cliente-info span {
+        font-size: 12px;
+    }
+}
+/* CSS para Gerenciamento de Eventos */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Definir fonte */
+* {
+    font-family: sans-serif, Arial, Helvetica, sans-serif;
+
+}
+
+.toggle-form-button {
+    margin-top: 200px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.event-form-container {
+    width: 40%;
+    align-items: center;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+}
+
+.event-form-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.event-form-label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.event-form-input, .event-file-input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.event-form-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.event-section-title {
+    font-size: 28px;
+    margin: 40px 0 20px;
+    text-align: center;
+}
+
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.event-item {
+    display: flex;
+    gap: 15px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.event-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.view-button {
+    background-color: #007BFF;
+    color: white;
+}
+
+.edit-button {
+    background-color: #FFC107;
+    color: white;
+}
+
+.delete-button {
+    background-color: #DC3545;
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .event-item {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .event-form-container {
+        padding: 15px;
+    }
+}
+/* Gerenciamento de Ingressos */
+
+
+
+/* Container de boas-vindas */
+.admin-welcome-container {
+
+
+    text-align: center;
+    padding: 20px;
+}
+
+.admin-title {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Caixa de mensagens */
+.message-container {
+    background-color: #ffdddd;
+    color: #d8000c;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* Formulário de Ingresso */
+.ticket-form-container, .ticket-list-container {
+    margin: 20px;
+}
+
+.ticket-form-title, .ticket-list-title {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.ticket-form-label {
+    font-size: 1em;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+.ticket-form-input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.ticket-form-submit {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ticket-form-submit:hover {
+    background-color: #218838;
+}
+
+/* Itens de ingresso */
+.ticket-item-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.ticket-item-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.ticket-item-details {
+    flex-grow: 1;
+}
+
+.ticket-item-details span {
+    display: block;
+    margin: 5px 0;
+    color: #555;
+}
+
+.ticket-delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ticket-delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    .ticket-item-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ticket-item-logo {
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-title, .ticket-form-title, .ticket-list-title {
+        font-size: 1.2em;
+    }
+
+    .ticket-form-input {
+        padding: 10px;
+    }
+
+    .ticket-form-submit {
+        width: 100%;
+    }
+}
+
+
+/* Página: Ver Evento */
+
+
+/* Container do Evento */
+.evento-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do Evento */
+.evento-titulo {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Detalhes do Evento */
+.evento-detalhes {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.evento-logo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.evento-detalhes p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.evento-detalhes strong {
+    color: #333;
+}
+
+/* Responsividade */
+
+/* Para dispositivos maiores que 768px */
+@media (max-width: 768px) {
+    .evento-container {
+        width: 95%;
+    }
+
+    .evento-titulo {
+        font-size: 1.8em;
+    }
+
+    .evento-detalhes p {
+        font-size: 1em;
+    }
+}
+
+/* Para dispositivos menores que 480px */
+@media (max-width: 480px) {
+    .evento-titulo {
+        font-size: 1.6em;
+    }
+
+    .evento-logo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .evento-detalhes p {
+        font-size: 0.9em;
+    }
+}
+
+
+/* Estilos para a página 'Editar Evento' */
+
+/* Contêiner principal da edição de evento */
+.evento-edicao-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Título da página de edição */
+.evento-edicao-titulo {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilos para os rótulos do formulário */
+.evento-edicao-label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    color: #333;
+}
+
+/* Estilos para os inputs e textarea */
+.evento-edicao-input, .evento-edicao-file-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.evento-edicao-input:focus, .evento-edicao-file-input:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+/* Estilo para o botão de submit */
+.evento-edicao-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.evento-edicao-submit:hover {
+    background-color: #2980b9;
+}
+
+/* Responsividade para dispositivos menores */
+@media screen and (max-width: 768px) {
+    .evento-edicao-container {
+        padding: 15px;
+    }
+
+    .evento-edicao-titulo {
+        font-size: 1.8rem;
+    }
+
+    .evento-edicao-input, .evento-edicao-file-input {
+        font-size: 0.9rem;
+    }
+
+    .evento-edicao-submit {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .evento-edicao-container {
+        padding: 10px;
+    }
+
+    .evento-edicao-titulo {
+        font-size: 1.5rem;
+    }
+
+    .evento-edicao-input, .evento-edicao-file-input {
+        font-size: 0.8rem;
+    }
+
+    .evento-edicao-submit {
+        font-size: 1rem;
+    }
+}
+/* Estilos para a página 'Aniversariantes' */
+
+/* Contêiner de boas-vindas */
+.admin-welcome-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-welcome-title {
+    font-size: 2rem;
+    color: #333;
+}
+
+.admin-welcome-text {
+    font-size: 1rem;
+    color: #777;
+}
+
+
+/* Responsividade para dispositivos menores */
+@media screen and (max-width: 768px) {
+    .admin-welcome-container {
+        padding: 15px;
+    }
+
+    .admin-welcome-title {
+        font-size: 1.8rem;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) {
+    .admin-welcome-container {
+        padding: 10px;
+    }
+
+    .admin-welcome-title {
+        font-size: 1.5rem;
+    }
+
+}
+/*ESTILOS PAGINA CLIENTES PAULA*/
+
+.clientes-paula-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.clientes-paula-header h2 {
+    font-size: 28px;
+    color: #34495e;
+}
+
+.clientes-paula-message {
+    background-color: #ffcc00;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.clientes-paula-form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-out;
+}
+
+.clientes-paula-form-container h3 {
+    font-size: 24px;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.clientes-paula-form-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #34495e;
+    display: block;
+}
+
+.clientes-paula-form-input, .clientes-paula-form-file-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.clientes-paula-form-submit {
+    background-color: #4A90E2;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.clientes-paula-form-submit:hover {
+    background-color: #357ABD;
+}
+
+.clientes-paula-lista {
+    margin-top: 40px;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.clientes-paula-lista h3 {
+    font-size: 24px;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.clientes-paula-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.clientes-paula-id {
+    font-weight: bold;
+    color: #4A90E2;
+    margin-right: 15px;
+}
+
+.clientes-paula-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.clientes-paula-info {
+    flex-grow: 1;
+}
+
+.clientes-paula-info span {
+    display: block;
+    font-size: 16px;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+.clientes-paula-delete-button {
+    background-color: #E74C3C;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clientes-paula-delete-button:hover {
+    background-color: #C0392B;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .clientes-paula-form-container {
+        padding: 15px;
+    }
+
+    .clientes-paula-form-container h3 {
+        font-size: 20px;
+    }
+
+    .clientes-paula-form-input, .clientes-paula-form-file-input {
+        padding: 8px;
+    }
+
+    .clientes-paula-form-submit {
+        font-size: 16px;
+    }
+
+    .clientes-paula-lista {
+        width: 90%;
+    }
+
+    .clientes-paula-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .clientes-paula-form-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .clientes-paula-form-container h3 {
+        font-size: 18px;
+    }
+
+    .clientes-paula-form-input, .clientes-paula-form-file-input {
+        padding: 6px;
+    }
+
+    .clientes-paula-form-submit {
+        font-size: 14px;
+    }
+
+    .clientes-paula-lista {
+        width: 100%;
+    }
+
+    .clientes-paula-item {
+        padding: 10px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ESTILOS PÁGINA GERENCIAMENTO DE VENDA DE INGRESSOS */
+
+.admin-welcome-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-welcome-title {
+    font-size: 28px;
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+.admin-message {
+    background-color: #ffcc00;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.ingresso-form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 650px;
+    margin: 0 auto;
+    animation: fadeIn 1s ease-out;
+}
+
+.ingresso-form-title {
+    font-size: 24px;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.ingresso-form-label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #34495e;
+    display: block;
+}
+
+.ingresso-form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.ingresso-form-btn {
+    background-color: #4A90E2;
+    color: #fff;
+    border: none;
+    padding: 12px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.ingresso-form-btn:hover {
+    background-color: #357ABD;
+}
+
+.authorized-ingressos-container {
+    width: 80%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.authorized-ingressos-title {
+    font-size: 24px;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+.authorized-ingressos-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.authorized-ingressos-table-header {
+    background-color: #f1f1f1;
+    color: #34495e;
+}
+
+.authorized-ingressos-table-column {
+    padding: 10px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.authorized-ingressos-table-row {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.authorized-ingressos-table-cell {
+    padding: 10px;
+    text-align: left;
+}
+
+.desautorizar-ingresso-btn {
+    background-color: #E74C3C;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.desautorizar-ingresso-btn:hover {
+    background-color: #C0392B;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .ingresso-form-container {
+        padding: 15px;
+    }
+
+    .ingresso-form-title {
+        font-size: 20px;
+    }
+
+    .ingresso-form-input {
+        padding: 8px;
+    }
+
+    .ingresso-form-btn {
+        font-size: 16px;
+    }
+
+    .authorized-ingressos-container {
+        width: 90%;
+    }
+
+    .authorized-ingressos-table {
+        font-size: 14px;
+    }
+
+    .authorized-ingressos-table-column {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ingresso-form-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .ingresso-form-title {
+        font-size: 18px;
+    }
+
+    .ingresso-form-input {
+        padding: 6px;
+    }
+
+    .ingresso-form-btn {
+        font-size: 14px;
+    }
+
+    .authorized-ingressos-container {
+        width: 100%;
+    }
+
+    .authorized-ingressos-table {
+        font-size: 12px;
+    }
+
+    .authorized-ingressos-table-column {
+        padding: 6px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ESTILOS PÁGINA PRINCIPAL */
+
+.main-welcome-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.main-welcome-title {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.main-description {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.main-btn {
+    background-color: #4A90E2;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.main-btn:hover {
+    background-color: #357ABD;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-welcome-title {
+        font-size: 24px;
+    }
+
+    .main-description {
+        font-size: 16px;
+    }
+
+    .main-btn {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-welcome-title {
+        font-size: 20px;
+    }
+
+    .main-description {
+        font-size: 14px;
+    }
+
+    .main-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+
+/* ESTILOS PARA A PÁGINA DE COMPRAR INGRESSO */
+
+.comprar-ingresso-container {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.comprar-ingresso-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.comprar-ingresso-message {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.comprar-ingresso-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.comprar-ingresso-card {
+    width: 30%;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.comprar-ingresso-card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.comprar-ingresso-thumbnail-container {
+    margin-bottom: 20px;
+}
+
+.comprar-ingresso-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.comprar-ingresso-card-title {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.comprar-ingresso-card-text {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.comprar-ingresso-quantity {
+    width: 60px;
+    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.comprar-ingresso-btn {
+    background-color: #4A90E2;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    display: inline-block;
+    width: 100%;
+}
+
+.comprar-ingresso-btn:hover {
+    background-color: #357ABD;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .comprar-ingresso-card {
+        width: 48%;
+    }
+
+    .comprar-ingresso-title {
+        font-size: 24px;
+    }
+
+    .comprar-ingresso-card-title {
+        font-size: 20px;
+    }
+
+    .comprar-ingresso-card-text {
+        font-size: 14px;
+    }
+
+    .comprar-ingresso-btn {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comprar-ingresso-card {
+        width: 100%;
+    }
+
+    .comprar-ingresso-title {
+        font-size: 20px;
+    }
+
+    .comprar-ingresso-card-title {
+        font-size: 18px;
+    }
+
+    .comprar-ingresso-card-text {
+        font-size: 12px;
+    }
+
+    .comprar-ingresso-btn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+
+/* ESTILOS PARA A PÁGINA DE INGRESSOS ADQUIRIDOS */
+
+.visualizar-ingressos-header {
+    background-color: #34495e;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.visualizar-ingressos-header-title {
+    font-size: 32px;
+    margin: 0;
+}
+
+.visualizar-ingressos-container {
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.visualizar-ingressos-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.visualizar-ingressos-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.visualizar-ingressos-table-header {
+    background-color: #ecf0f1;
+    text-align: left;
+}
+
+.visualizar-ingressos-table-cell {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.visualizar-ingressos-table-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.visualizar-ingressos-table-cell:nth-child(1),
+.visualizar-ingressos-table-cell:nth-child(2) {
+    text-align: left;
+}
+
+.visualizar-ingressos-form {
+    text-align: center;
+}
+
+.visualizar-ingressos-btn {
+    background-color: #4A90E2;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.visualizar-ingressos-btn:hover {
+    background-color: #357ABD;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .visualizar-ingressos-table-cell {
+        padding: 10px;
+    }
+
+    .visualizar-ingressos-title {
+        font-size: 24px;
+    }
+
+    .visualizar-ingressos-header-title {
+        font-size: 28px;
+    }
+
+    .visualizar-ingressos-btn {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .visualizar-ingressos-table-cell {
+        padding: 8px;
+    }
+
+    .visualizar-ingressos-title {
+        font-size: 20px;
+    }
+
+    .visualizar-ingressos-header-title {
+        font-size: 24px;
+    }
+
+    .visualizar-ingressos-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

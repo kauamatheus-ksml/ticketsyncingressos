@@ -1,0 +1,653 @@
+/* assets/css/registro.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --primary-color: #002f6d;
+  --primary-light: #004196;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --text-color: #1f2937;
+  --text-light: #6b7280;
+  --text-muted: #9ca3af;
+  --background: #ffffff;
+  --background-light: #f9fafb;
+  --border-color: #e5e7eb;
+  --border-focus: #d1d5db;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --transition: all 0.2s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body com navbar */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--background-light);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Wrapper para centralizar o formulário */
+.ts-register-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px); /* Desconta altura do header */
+  padding: 40px 20px;
+}
+
+/* Container principal minimalista */
+.ts-register-container {
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 48px;
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.5s ease-out;
+  margin: 0 auto;
+}
+
+/* Header do registro com progresso */
+.ts-register-header {
+  margin-bottom: 40px;
+}
+
+/* Indicador de progresso */
+.ts-progress-container {
+  margin-top: 24px;
+}
+
+.ts-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.ts-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+  transition: width 0.3s ease;
+}
+
+.ts-progress-steps {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.ts-step {
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.ts-step.active {
+  color: var(--primary-color);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Título limpo */
+.ts-register-heading {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-top: 0;
+  color: var(--text-color);
+  letter-spacing: -0.025em;
+}
+
+.ts-register-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+/* Alerts limpos */
+.ts-alert {
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  border-radius: var(--border-radius);
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.ts-alert-success {
+  background: #f0f9ff;
+  color: var(--success-color);
+  border: 1px solid #bae6fd;
+  border-left: 3px solid var(--success-color);
+}
+
+.ts-alert-error {
+  background: #fef2f2;
+  color: var(--error-color);
+  border: 1px solid #fecaca;
+  border-left: 3px solid var(--error-color);
+}
+
+/* Formulário limpo */
+.ts-register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.ts-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ts-form-label {
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 0.875rem;
+}
+
+.ts-form-input,
+.ts-form-file-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: var(--transition);
+  background: var(--background);
+  color: var(--text-color);
+}
+
+.ts-form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.ts-form-input:focus,
+.ts-form-file-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 47, 109, 0.1);
+}
+
+/* Input de arquivo estilizado */
+.ts-form-file-input {
+  cursor: pointer;
+  padding: 8px 12px;
+  background: var(--background-light);
+}
+
+.ts-form-file-input:hover {
+  background: #f3f4f6;
+}
+
+/* Botão principal simples */
+.ts-btn-primary {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--primary-color);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 8px;
+}
+
+.ts-btn-primary:hover {
+  background: var(--primary-light);
+}
+
+.ts-btn-primary:active {
+  background: var(--primary-color);
+  transform: translateY(1px);
+}
+
+/* Links limpos */
+.ts-register-links {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.ts-register-text {
+  color: var(--text-light);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.ts-register-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.ts-register-link:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+/* Seções do formulário */
+.ts-form-section {
+  margin-bottom: 40px;
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--background-light);
+  text-align: left;
+}
+
+.ts-section-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.ts-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ts-section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.ts-section-subtitle {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+/* Grid para campos menores */
+.ts-form-grid,
+.ts-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Ajuda para campos */
+.ts-field-help {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Feedback de validação */
+.ts-field-feedback {
+  font-size: 0.75rem;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.ts-field-feedback.ts-valid {
+  color: var(--success-color);
+}
+
+.ts-field-feedback.ts-invalid {
+  color: var(--error-color);
+}
+
+/* Estados dos inputs */
+.ts-form-input.ts-input-valid {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.ts-form-input.ts-input-invalid {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Checkboxes personalizados */
+.ts-checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ts-checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  background: var(--background);
+}
+
+.ts-checkbox-item:hover {
+  border-color: var(--primary-color);
+  background: rgba(0, 47, 109, 0.02);
+}
+
+.ts-checkbox-item input[type="checkbox"] {
+  display: none;
+}
+
+.ts-checkbox-mark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  position: relative;
+  flex-shrink: 0;
+  transition: var(--transition);
+  margin-top: 2px;
+}
+
+.ts-checkbox-item input[type="checkbox"]:checked + .ts-checkbox-mark {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.ts-checkbox-item input[type="checkbox"]:checked + .ts-checkbox-mark::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.ts-checkbox-content h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0 0 4px 0;
+}
+
+.ts-checkbox-content p {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Área de upload melhorada */
+.ts-upload-area {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 24px;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--background);
+  transition: var(--transition);
+}
+
+.ts-upload-area:hover,
+.ts-upload-area.ts-dragover {
+  border-color: var(--primary-color);
+  background: rgba(0, 47, 109, 0.02);
+}
+
+.ts-upload-preview {
+  flex-shrink: 0;
+}
+
+.ts-upload-preview img,
+.ts-upload-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ts-upload-placeholder {
+  background: var(--background-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--text-muted);
+  border: 2px dashed var(--border-color);
+}
+
+.ts-upload-info {
+  flex: 1;
+}
+
+.ts-upload-info h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin: 0 0 8px 0;
+}
+
+.ts-upload-info p {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin: 0 0 16px 0;
+}
+
+/* Ações do formulário */
+.ts-form-actions {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-color);
+}
+
+.ts-btn-secondary {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background: var(--background);
+  color: var(--text-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ts-btn-secondary:hover {
+  background: var(--background-light);
+  border-color: var(--primary-color);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .ts-register-wrapper {
+    padding: 20px 16px;
+    min-height: calc(100vh - 80px);
+  }
+  
+  .ts-register-container {
+    padding: 40px 32px;
+    margin: 0;
+    max-width: 100%;
+  }
+  
+  .ts-form-section {
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+  
+  .ts-register-heading {
+    font-size: 1.75rem;
+  }
+  
+  
+  .ts-form-grid,
+  .ts-form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .ts-upload-area {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .ts-progress-steps {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ts-register-wrapper {
+    padding: 16px;
+    min-height: calc(100vh - 70px);
+  }
+  
+  .ts-register-container {
+    padding: 32px 24px;
+  }
+  
+  .ts-form-section {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .ts-section-title {
+    font-size: 1.125rem;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .ts-checkbox-item {
+    padding: 12px;
+  }
+  
+  .ts-register-heading {
+    font-size: 1.5rem;
+  }
+}
+
+/* Estados de focus para acessibilidade */
+.ts-btn-primary:focus,
+.ts-form-input:focus,
+.ts-form-file-input:focus,
+.ts-register-link:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Indicador visual para campo obrigatório */
+.ts-form-label[data-required="true"]::after {
+  content: " *";
+  color: var(--error-color);
+  font-weight: 600;
+}
+
+/* Melhorias para upload de arquivo */
+.ts-file-upload-area {
+  position: relative;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 24px 16px;
+  text-align: center;
+  background: var(--background-light);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.ts-file-upload-area:hover {
+  border-color: var(--primary-color);
+  background: #f8fafc;
+}
+
+.ts-file-upload-area.ts-dragover {
+  border-color: var(--primary-color);
+  background: #f0f7ff;
+}
+
+.ts-file-upload-text {
+  color: var(--text-light);
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+}
+
+.ts-file-upload-subtext {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.ts-file-input-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ts-file-selected {
+  color: var(--success-color);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+/* Ícones para Font Awesome */
+.fas {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+/* Estados de foco melhorados */
+.ts-form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 47, 109, 0.1);
+}
+
+/* Animações suaves */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.ts-checkbox-mark {
+  animation: pulse 2s infinite;
+}
+
+.ts-checkbox-item input[type="checkbox"]:checked + .ts-checkbox-mark {
+  animation: none;
+}

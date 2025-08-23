@@ -1,0 +1,392 @@
+/* Variáveis de cores e estilos */
+:root {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --secondary-color: #2ecc71;
+  --accent-color: #e74c3c;
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --text-color: #333333;
+  --text-secondary: #7f8c8d;
+  --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --border-radius: 12px;
+  --spacing: 20px;
+}
+
+/* Estilos globais da página */
+.perfil-page-body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container principal */
+.perfil-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 var(--spacing);
+  animation: fadeIn 0.8s ease;
+}
+
+/* Card do perfil */
+.perfil-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.perfil-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Título do perfil */
+.perfil-titulo {
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.perfil-titulo::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--secondary-color);
+  border-radius: 3px;
+}
+
+/* Foto de perfil */
+.perfil-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 2rem;
+  border: 5px solid white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transition: var(--transition);
+}
+
+.perfil-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Informações do perfil */
+.perfil-info {
+  font-size: 1.1rem;
+  margin: 0.8rem 0;
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.perfil-info:last-of-type {
+  border-bottom: none;
+  margin-bottom: 2rem;
+}
+
+.perfil-info strong {
+  color: var(--primary-dark);
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.perfil-info:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  transform: translateX(5px);
+}
+
+/* Botão para editar perfil */
+.perfil-botao-editar {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+  font-weight: 500;
+}
+
+.perfil-botao-editar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+}
+
+.perfil-botao-editar:active {
+  transform: translateY(1px);
+}
+
+/* Estilos do Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  overflow: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  position: relative;
+  background-color: var(--card-bg);
+  margin: 5% auto;
+  padding: 2rem;
+  width: 80%;
+  max-width: 600px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  animation: slideDown 0.4s ease;
+}
+
+.close-button {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 1.8rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.close-button:hover {
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+/* Estilos do formulário */
+.perfil-formulario-titulo {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: var(--primary-dark);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.perfil-formulario-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.perfil-formulario-input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.perfil-formulario-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+.perfil-formulario-input[type="file"] {
+  padding: 0.5rem 0;
+  border: none;
+}
+
+.perfil-formulario-submit {
+  background: linear-gradient(135deg, var(--secondary-color), #27ae60);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.perfil-formulario-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+}
+
+.perfil-formulario-submit:active {
+  transform: translateY(1px);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .perfil-container {
+    margin: 2rem auto;
+  }
+  
+  .perfil-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .perfil-pic {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .perfil-titulo {
+    font-size: 1.8rem;
+  }
+  
+  .perfil-info {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+  
+  .modal-content {
+    width: 90%;
+    margin: 10% auto;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .perfil-container {
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+  
+  .perfil-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .perfil-pic {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .perfil-titulo {
+    font-size: 1.5rem;
+  }
+  
+  .perfil-info {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    text-align: left;
+  }
+  
+  .perfil-botao-editar {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: 1.2rem;
+  }
+  
+  .perfil-formulario-titulo {
+    font-size: 1.5rem;
+  }
+  
+  .perfil-formulario-label {
+    font-size: 0.9rem;
+  }
+  
+  .perfil-formulario-input {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+  
+  .perfil-formulario-submit {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Efeito de pulsação para a foto de perfil */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+  }
+}
+
+.perfil-pic {
+  animation: pulse 2s infinite;
+}
+
+/* Modo escuro - se quiser implementar futuramente */
+@media (prefers-color-scheme: dark) {
+  
+  
+  .perfil-info {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .perfil-info:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .perfil-formulario-input {
+    border: 1px solid #444;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+  }
+}

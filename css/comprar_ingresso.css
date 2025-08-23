@@ -1,0 +1,549 @@
+/* comprar_ingresso.css */
+/* Reset e estilos base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #f8f9fc;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header e logo */
+header {
+  background: linear-gradient(135deg, #002f6d, #0055a6);
+  padding: 15px 20px;
+  box-shadow: 0 4px 12px rgba(0, 47, 109, 0.15);
+}
+
+.logo {
+  text-align: center;
+}
+
+.logo img {
+  height: 55px;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+/* Container principal */
+.container {
+  max-width: 1200px;
+  width: 95%;
+  margin: 25px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease-in-out;
+  flex: 1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Timer */
+#timer {
+  background-color: #f5f3ff;
+  color: #002F6D;
+  padding: 12px 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-left: 4px solid #0054c2;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.2); }
+  70% { box-shadow: 0 0 0 8px rgba(79, 70, 229, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+}
+
+/* Indicador de etapas */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin: 0 12px;
+  background-color: #e2e8f0;
+  color: #64748b;
+  transition: all 0.3s ease;
+}
+
+.circle.active {
+  background-color: #002F6D;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 85, 166, 0.3);
+}
+
+.circle.checked {
+  background-color: #10b981;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+}
+
+.step-title {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Layout de formulário de duas colunas */
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.form-column {
+  flex: 1 1 60%;
+  min-width: 300px;
+}
+
+.summary-column {
+  flex: 1 1 30%;
+  min-width: 280px;
+}
+
+/* Estilo dos grupos de formulário */
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.form-group small {
+  display: block;
+  color: #718096;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #002F6D;
+  box-shadow: 0 0 0 2px rgba(0, 85, 166, 0.2);
+}
+
+/* Checkbox customizado */
+.form-group input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #cbd5e0;
+  border-radius: 4px;
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  cursor: pointer;
+}
+
+.form-group input[type="checkbox"]:checked {
+  background-color: #0055a6;
+  border-color: #0055a6;
+}
+
+.form-group input[type="checkbox"]:checked::before {
+  content: "✓";
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-group input[type="checkbox"] + label {
+  cursor: pointer;
+}
+
+/* Botões */
+.btn-proximo, 
+.btn-login {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.btn-proximo {
+  background-color: #0055a6;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 85, 166, 0.3);
+}
+
+.btn-proximo:hover {
+  background-color: #003e7a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 85, 166, 0.4);
+}
+
+.btn-login {
+  background-color: #002F6D;
+  color: white;
+  box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
+}
+
+.btn-login:hover {
+  background-color: #0055c4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px #002F6D;
+}
+
+.btn-voltar {
+  background-color: #e2e8f0;
+  color: #4a5568;
+  box-shadow: none;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-voltar:hover {
+  background-color: #cbd5e0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do botão Pix */
+.pix-button-container {
+  margin: 20px 0;
+}
+
+.btn-pix-animated {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #00c2ff, #0055a6);
+  color: white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-pix-animated::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.btn-pix-animated:hover::before {
+  opacity: 1;
+  transform: rotate(45deg) translate(50%, 50%);
+}
+
+.btn-pix-animated:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 85, 166, 0.4);
+}
+
+.btn-pix-animated.selected {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 6px 12px rgba(16, 185, 129, 0.4);
+}
+
+.pix-icon {
+  height: 25px;
+  filter: brightness(0) invert(1);
+}
+
+.pix-checkmark,
+.card-checkmark {
+  font-size: 1.2rem;
+  animation: bounceIn 0.4s;
+}
+
+/* Estilo do botão Cartão */
+.card-button-container {
+  margin: 20px 0;
+}
+
+.btn-card-animated {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #0055a6, #00c2ff);
+  color: white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-card-animated::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.btn-card-animated:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translate(-50%, -50%);
+}
+
+.btn-card-animated:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 85, 166, 0.4);
+}
+
+.btn-card-animated.selected {
+  background: linear-gradient(135deg, #059669, #10b981);
+  box-shadow: 0 6px 12px rgba(16, 185, 129, 0.4);
+}
+
+.card-icon {
+  height: 25px;
+  filter: brightness(0) invert(1);
+}
+
+.card-checkmark {
+  font-size: 1.2rem;
+  animation: bounceIn 0.4s;
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Layout de botões na linha */
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  gap: 15px;
+}
+
+.button-row .btn-proximo {
+  flex: 1;
+}
+
+/* Resumo de pedido */
+.resumo-pedido {
+  background-color: #f8f9fc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 20px;
+}
+
+.resumo-pedido h3 {
+  color: #002f6d;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.resumo-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.resumo-total {
+  margin-top: 15px;
+  padding: 15px 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0055a6;
+  border-top: 2px solid #e2e8f0;
+}
+
+/* Notificações de erro */
+.error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #ef4444;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Link para voltar */
+.link-voltar {
+  color: #0055a6;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.link-voltar:hover {
+  color: #003e7a;
+  text-decoration: underline;
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 15px;
+    margin: 10px auto;
+  }
+  
+  .step-indicator {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 15px;
+  }
+  
+  .circle {
+    margin: 0;
+    margin-right: 12px;
+  }
+  
+  .step-title {
+    margin-bottom: 15px;
+  }
+  
+  .form-container {
+    flex-direction: column;
+  }
+  
+  .form-column, 
+  .summary-column {
+    width: 100%;
+  }
+  
+  .summary-column {
+    order: 1;
+    margin-top: 20px;
+  }
+  
+  .resumo-pedido {
+    position: static;
+  }
+  
+  .btn-proximo, 
+  .btn-login,
+  .btn-pix-animated,
+  .btn-card-animated {
+    width: 100%;
+    padding: 12px 15px;
+  }
+  
+  .button-row {
+    flex-direction: column;
+  }
+  
+  .logo img {
+    height: 45px;
+  }
+}
+/* === Botões Pix / Cartão === */
+.btn-pix, .btn-card{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 20px;border:2px solid var(--primary-color);
+  background:#fff;border-radius:10px;cursor:pointer;
+  transition:.3s
+}
+.btn-pix:hover, .btn-card:hover{background:var(--hover-bg);}
+#cardFormWrapper .field{margin-bottom:12px}
+#cardFormWrapper input,#cardFormWrapper select{
+  width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;
+}
+
+/* Transições suaves entre etapas */
+.form-container {
+  transition: opacity 0.3s ease;
+}
+
+/* Estilos para campos somente leitura */
+input[readonly] {
+  background-color: #f8fafc;
+  cursor: not-allowed;
+  border-color: #e2e8f0;
+}
+
+/* Melhorias de acessibilidade */
+input:focus, button:focus {
+  outline: 2px solid #002F6D;
+  outline-offset: 2px;
+}
+
+/* Estilo para placeholder */
+::placeholder {
+  color: #a0aec0;
+  opacity: 1;
+}

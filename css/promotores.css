@@ -1,0 +1,253 @@
+:root {
+  --primary-color: #002f6d;
+  --secondary-color: #002f6d;
+  --success-color: #27ae60;
+  --error-color: #e74c3c;
+  --light-bg: #f8f9fa;
+  --text-color: #34495e;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+body.admin-page-body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.admin-welcome {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.admin-welcome-heading {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.admin-message {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: var(--border-radius);
+  background: #d4edda;
+  color: #155724;
+  text-align: center;
+}
+
+.promotor-form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
+}
+
+.promotor-form-title {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.promotor-form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.promotor-form-input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  transition: border-color 0.3s ease;
+}
+
+.promotor-form-input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.promotor-form-submit {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.promotor-form-submit:hover {
+  background-color: #2980b9;
+}
+
+.promotor-list-container {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.promotor-list-title {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.promotor-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--light-bg);
+  border-radius: var(--border-radius);
+  transition: transform 0.3s ease;
+}
+
+.promotor-item:hover {
+  transform: translateY(-2px);
+}
+
+.promotor-item-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--secondary-color);
+}
+
+.promotor-item-info {
+  flex: 1;
+}
+
+.promotor-item-info p {
+  margin: 0.3rem 0;
+}
+
+.promotor-item-actions {
+  min-width: 100px;
+}
+.edit-button {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}	
+.edit-button:hover {
+  background-color: #2980b9;
+}
+.promotor-resent-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.promotor-resent-button:hover {
+  background-color: #2980b9;
+}
+.promotor-delete-button {
+  background-color: var(--error-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.promotor-delete-button:hover {
+  background-color: #c0392b;
+}
+/* Estilos do Modal de Edição */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 0 10px;
+  }
+
+  .promotor-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .promotor-item-pic {
+    width: 60px;
+    height: 60px;
+  }
+
+  .promotor-form-container,
+  .promotor-list-container {
+    padding: 1rem;
+  }
+
+  .promotor-form-submit {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-welcome {
+    padding: 1rem;
+  }
+
+  .promotor-item-actions {
+    width: 100%;
+  }
+  .edit-button{
+    width: 100%;
+  }
+  .promotor-resent-button {
+    width: 100%;
+  }
+  .promotor-delete-button {
+    width: 100%;
+  }
+}

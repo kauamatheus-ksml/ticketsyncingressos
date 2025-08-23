@@ -1,0 +1,338 @@
+/* exibir_qrcode.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #04294f;
+  --secondary-color: #3f37c9;
+  --success-color: #4caf50;
+  --warning-color: #FF9202;
+  --error-color: #f44336;
+  --background-color: #f8f9fa;
+  --text-color: #343a40;
+  --light-text: #6c757d;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background 0.5s ease;
+}
+
+header {
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+header img {
+  max-height: 60px;
+  animation: pulse 2s infinite;
+}
+
+.container {
+  max-width: 550px;
+  width: 90%;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 20px;
+  color: var(--light-text);
+}
+
+.valor-pago-container {
+  background-color: #f0f4f8;
+  padding: 12px 15px;
+  border-radius: var(--border-radius);
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  border-left: 4px solid var(--primary-color);
+  text-align: left;
+  transition: var(--transition);
+}
+
+.valor-pago-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(67, 97, 238, 0.1);
+}
+
+#valorPago {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.qrcode-img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  animation: fadeIn 1s ease-in;
+}
+
+.qrcode-img:hover {
+  transform: scale(1.03);
+}
+
+.pix-code-container {
+  margin: 25px 0;
+}
+
+.pix-code {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  color: #555;
+  text-overflow: ellipsis;
+}
+
+.copy-button {
+  padding: 12px 25px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+  box-shadow: 0 4px 6px rgba(67, 97, 238, 0.15);
+}
+
+.copy-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(67, 97, 238, 0.2);
+}
+
+.copy-button:active {
+  transform: translateY(0);
+}
+
+.notification {
+  display: none;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  animation: slideDown 0.3s forwards;
+}
+
+.notification.success {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: var(--success-color);
+  border-left: 4px solid var(--success-color);
+}
+
+.notification.error {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: var(--error-color);
+  border-left: 4px solid var(--error-color);
+}
+
+.status-message {
+  padding: 12px 15px;
+  background-color: #f0f4f8;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  margin-top: 20px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.status-message::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: var(--warning-color);
+}
+
+.approved-container {
+  display: none;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  animation: fadeIn 1s ease-in;
+}
+
+.approved-container h3 {
+  color: var(--success-color);
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.approved-container p {
+  margin-bottom: 20px;
+}
+
+.approved-container button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: var(--success-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.approved-container button:hover {
+  background-color: #3d8b40;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  .valor-pago-container {
+    font-size: 16px;
+  }
+  
+  .approved-container button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header img {
+    max-height: 40px;
+  }
+  
+  .container {
+    padding: 15px;
+  }
+  
+  .copy-button {
+    width: 100%;
+  }
+  
+  .qrcode-img {
+    max-width: 250px;
+  }
+}
+
+/* Estado de sucesso para o status-message */
+.status-message.approved::before {
+  background-color: var(--success-color);
+}
+
+/* Efeito de carregamento para status pendente */
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.status-message::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  animation: loading 2s infinite linear;
+}
+
+/* Remove o efeito de carregamento quando aprovado */
+.status-message.approved::after {
+  display: none;
+}
