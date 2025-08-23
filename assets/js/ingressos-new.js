@@ -335,6 +335,9 @@ class IngressosSystem {
             document.getElementById('preco').value = ingresso.preco;
             document.getElementById('quantidade').value = ingresso.quantidade;
             
+            // Carregar lotes se existirem
+            await this.loadLotesForEdit(ingresso.id);
+            
             this.openModal();
             
         } catch (error) {
@@ -390,6 +393,10 @@ class IngressosSystem {
     async saveIngresso() {
         const form = document.getElementById('ingressoForm');
         const formData = new FormData(form);
+        
+        // Adicionar flag de uso de lotes
+        const usarLotes = document.getElementById('usarLotes').checked;
+        formData.append('usar_lotes', usarLotes ? '1' : '0');
         
         const btnSalvar = document.getElementById('btnSalvar');
         const originalText = btnSalvar.innerHTML;
@@ -450,6 +457,176 @@ class IngressosSystem {
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }
+    }
+    
+    // ===== MÉTODOS DOS LOTES =====
+    
+    toggleLotesSection() {
+        const checkbox = document.getElementById('usarLotes');
+        const section = document.getElementById('lotesSection');
+        
+        if (checkbox.checked) {
+            section.classList.remove('hidden');
+            if (this.loteCount === 0) {
+                this.adicionarLote();
+            }
+        } else {
+            section.classList.add('hidden');
+            document.getElementById('lotesContainer').innerHTML = '';
+            this.loteCount = 0;
+        }
+    }
+    
+    adicionarLote() {
+        this.loteCount++;
+        const container = document.getElementById('lotesContainer');
+        
+        const loteDiv = document.createElement('div');
+        loteDiv.className = 'lote-item';
+        loteDiv.innerHTML = `
+            <div class="lote-header">
+                <span class="lote-number">Lote ${this.loteCount}</span>
+                <button type="button" class="lote-remove" onclick="ingressosSystem.removerLote(this)">
+                    <i class="fas fa-trash"></i> Remover
+                </button>
+            </div>
+            
+            <div class="lote-form">
+                <div class="lote-form-group">
+                    <label>Nome do Lote *</label>
+                    <input type="text" name="lotes[${this.loteCount-1}][nome]" placeholder="Ex: 1º Lote, Early Bird..." required>
+                </div>
+                
+                <div class="lote-form-group">
+                    <label>Preço (R$) *</label>
+                    <input type="number" name="lotes[${this.loteCount-1}][preco]" step="0.01" min="0" placeholder="0,00" required>
+                </div>
+                
+                <div class="lote-form-group">
+                    <label>Quantidade *</label>
+                    <input type="number" name="lotes[${this.loteCount-1}][quantidade]" min="1" placeholder="50" required>
+                </div>
+                
+                <div class="lote-form-group">
+                    <label>Data de Início</label>
+                    <input type="datetime-local" name="lotes[${this.loteCount-1}][data_inicio]">
+                </div>
+                
+                <div class="lote-form-group">
+                    <label>Data de Fim</label>
+                    <input type="datetime-local" name="lotes[${this.loteCount-1}][data_fim]">
+                </div>
+                
+                <div class="lote-form-group full-width">
+                    <label>Descrição</label>
+                    <textarea name="lotes[${this.loteCount-1}][descricao]" placeholder="Descrição opcional do lote..."></textarea>
+                </div>
+            </div>
+        `;
+        
+        container.appendChild(loteDiv);
+    }
+    
+    removerLote(button) {
+        const loteItem = button.closest('.lote-item');
+        if (loteItem) {
+            loteItem.remove();
+            this.reorderLotes();
+        }
+    }
+    
+    reorderLotes() {
+        const lotes = document.querySelectorAll('.lote-item');
+        this.loteCount = 0;
+        
+        lotes.forEach((lote, index) => {
+            this.loteCount++;
+            const numberSpan = lote.querySelector('.lote-number');
+            if (numberSpan) {
+                numberSpan.textContent = `Lote ${this.loteCount}`;
+            }
+            
+            // Atualizar nomes dos campos
+            const inputs = lote.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                if (input.name) {
+                    input.name = input.name.replace(/\[\d+\]/, `[${index}]`);
+                }
+            });
+        });
+    }
+    
+    async loadLotesForEdit(ingressoId) {
+        try {
+            const response = await fetch(`ingressos.php?action=get_lotes&ingresso_id=${ingressoId}`);
+            const lotes = await response.json();
+            
+            if (lotes.length > 0) {
+                document.getElementById('usarLotes').checked = true;
+                this.toggleLotesSection();
+                
+                // Limpar container
+                document.getElementById('lotesContainer').innerHTML = '';
+                this.loteCount = 0;
+                
+                // Adicionar lotes existentes
+                lotes.forEach(lote => {
+                    this.adicionarLoteExistente(lote);
+                });
+            }
+        } catch (error) {
+            console.error('Erro ao carregar lotes:', error);
+        }
+    }
+    
+    adicionarLoteExistente(lote) {
+        this.loteCount++;
+        const container = document.getElementById('lotesContainer');
+        
+        const loteDiv = document.createElement('div');
+        loteDiv.className = 'lote-item';
+        loteDiv.innerHTML = `
+            <div class="lote-header">
+                <span class="lote-number">Lote ${this.loteCount}</span>
+                <button type="button" class="lote-remove" onclick="ingressosSystem.removerLote(this)">
+                    <i class="fas fa-trash"></i> Remover
+                </button>
+            </div>
+            
+            <div class="lote-form">
+                <div class="lote-form-group">
+                    <label>Nome do Lote *</label>
+                    <input type="text" name="lotes[${this.loteCount-1}][nome]" placeholder="Ex: 1º Lote, Early Bird..." value="${lote.nome || ''}" required>
+                </div>
+                
+                <div class="lote-form-group">
+                    <label>Preço (R$) *</label>
+                    <input type="number" name="lotes[${this.loteCount-1}][preco]" step="0.01" min="0" value="${lote.preco || ''}" required>
+                </div>
+                
+                <div class="lote-form-group">
+                    <label>Quantidade *</label>
+                    <input type="number" name="lotes[${this.loteCount-1}][quantidade]" min="1" value="${lote.quantidade || ''}" required>
+                </div>
+                
+                <div class="lote-form-group">
+                    <label>Data de Início</label>
+                    <input type="datetime-local" name="lotes[${this.loteCount-1}][data_inicio]" value="${lote.data_inicio ? this.formatDateTimeLocal(lote.data_inicio) : ''}">
+                </div>
+                
+                <div class="lote-form-group">
+                    <label>Data de Fim</label>
+                    <input type="datetime-local" name="lotes[${this.loteCount-1}][data_fim]" value="${lote.data_fim ? this.formatDateTimeLocal(lote.data_fim) : ''}">
+                </div>
+                
+                <div class="lote-form-group full-width">
+                    <label>Descrição</label>
+                    <textarea name="lotes[${this.loteCount-1}][descricao]" placeholder="Descrição opcional do lote...">${lote.descricao || ''}</textarea>
+                </div>
+            </div>
+        `;
+        
+        container.appendChild(loteDiv);
     }
     
     // ===== MÉTODOS DOS CUPONS =====
